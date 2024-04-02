@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.hongker.org","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="开篇介绍 根据合适的场景使用特定的并发工具类,因地制宜的选择合适的并发工具类，对于我们解决并发问题事半功倍本文分场景，特点，介绍了各个并发工具类，源码和示例结合，站在巨人的肩膀上学习并发   本文篇幅较长，建议收藏后，需要使用时可根据实际场景,并发工具类的特点来对症下药本文介绍了常用的Java并发工具类及其适用场景java并发包，有许多接口与类由著名并发大师 Doug Lea 定义和实现  Loc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="并发工具类归档与详解">
+<meta property="og:url" content="http://blog.hongker.org/2020/10/%E5%B9%B6%E5%8F%91%E6%8A%80%E6%9C%AF/%E5%B9%B6%E5%8F%91%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="泽仁&#39;s Blogs">
+<meta property="og:description" content="开篇介绍 根据合适的场景使用特定的并发工具类,因地制宜的选择合适的并发工具类，对于我们解决并发问题事半功倍本文分场景，特点，介绍了各个并发工具类，源码和示例结合，站在巨人的肩膀上学习并发   本文篇幅较长，建议收藏后，需要使用时可根据实际场景,并发工具类的特点来对症下药本文介绍了常用的Java并发工具类及其适用场景java并发包，有许多接口与类由著名并发大师 Doug Lea 定义和实现  Loc">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-10-21T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-04-02T10:00:16.009Z">
+<meta property="article:author" content="Link Sun">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://blog.hongker.org/2020/10/%E5%B9%B6%E5%8F%91%E6%8A%80%E6%9C%AF/%E5%B9%B6%E5%8F%91%E7%AC%94%E8%AE%B0/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://blog.hongker.org/2020/10/%E5%B9%B6%E5%8F%91%E6%8A%80%E6%9C%AF/%E5%B9%B6%E5%8F%91%E7%AC%94%E8%AE%B0/","path":"2020/10/并发技术/并发笔记/","title":"并发工具类归档与详解"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>并发工具类归档与详解 | 泽仁's Blogs</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">泽仁's Blogs</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E7%AF%87%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">开篇介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lock%E5%92%8CCondition"><span class="nav-number">2.</span> <span class="nav-text">Lock和Condition</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Lock%EF%BC%9A%E9%94%81"><span class="nav-number">2.1.</span> <span class="nav-text">Lock：锁</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Condition%EF%BC%9A%E6%9D%A1%E4%BB%B6%E5%8F%98%E9%87%8F"><span class="nav-number">2.2.</span> <span class="nav-text">Condition：条件变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E9%94%81%E7%9A%84%E6%9C%80%E4%BD%B3%E5%8E%9F%E5%88%99"><span class="nav-number">2.3.</span> <span class="nav-text">使用锁的最佳原则</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Semaphore"><span class="nav-number">3.</span> <span class="nav-text">Semaphore</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ReadWriteLock"><span class="nav-number">4.</span> <span class="nav-text">ReadWriteLock</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#StampedLock"><span class="nav-number">5.</span> <span class="nav-text">StampedLock</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%99%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E8%AF%BB%E7%A4%BA%E4%BE%8B"><span class="nav-number">5.1.</span> <span class="nav-text">写锁和悲观读示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9D%A5%E8%87%AA%E5%AE%98%E6%96%B9%E7%9A%84%E4%B9%90%E8%A7%82%E8%AF%BB%E7%A4%BA%E4%BE%8B"><span class="nav-number">5.2.</span> <span class="nav-text">来自官方的乐观读示例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CountDownLatch-%E5%92%8CCyclicBarrier"><span class="nav-number">6.</span> <span class="nav-text">CountDownLatch 和CyclicBarrier</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CountDownLatch"><span class="nav-number">6.1.</span> <span class="nav-text">CountDownLatch</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CyclicBarrier"><span class="nav-number">6.2.</span> <span class="nav-text">CyclicBarrier</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B9%B6%E5%8F%91%E5%AE%B9%E5%99%A8"><span class="nav-number">7.</span> <span class="nav-text">并发容器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%AE%B9%E5%99%A8%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%B9%B6%E5%8F%91%E9%97%AE%E9%A2%98"><span class="nav-number">7.1.</span> <span class="nav-text">常用容器如何解决并发问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B9%B6%E5%8F%91%E5%AE%B9%E5%99%A8%E6%9C%89%E5%93%AA%E4%BA%9B"><span class="nav-number">7.2.</span> <span class="nav-text">并发容器有哪些:</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#List"><span class="nav-number">7.2.1.</span> <span class="nav-text">List</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Set"><span class="nav-number">7.2.2.</span> <span class="nav-text">Set</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Map"><span class="nav-number">7.2.3.</span> <span class="nav-text">Map</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Queue"><span class="nav-number">7.2.4.</span> <span class="nav-text">Queue</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E5%AD%90%E7%B1%BB"><span class="nav-number">8.</span> <span class="nav-text">原子类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Executor"><span class="nav-number">9.</span> <span class="nav-text">Executor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Future"><span class="nav-number">10.</span> <span class="nav-text">Future</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CompletableFuture"><span class="nav-number">11.</span> <span class="nav-text">CompletableFuture</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CompletionService"><span class="nav-number">12.</span> <span class="nav-text">CompletionService</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fork-Join%EF%BC%9A%E5%8D%95%E6%9C%BA%E7%89%88%E7%9A%84MapReduce"><span class="nav-number">13.</span> <span class="nav-text">Fork&#x2F;Join：单机版的MapReduce</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Link Sun</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://blog.hongker.org/2020/10/%E5%B9%B6%E5%8F%91%E6%8A%80%E6%9C%AF/%E5%B9%B6%E5%8F%91%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Link Sun">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泽仁's Blogs">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="并发工具类归档与详解 | 泽仁's Blogs">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          并发工具类归档与详解
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-10-22 00:00:00" itemprop="dateCreated datePublished" datetime="2020-10-22T00:00:00+08:00">2020-10-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-04-02 18:00:16" itemprop="dateModified" datetime="2024-04-02T18:00:16+08:00">2024-04-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h3 id="开篇介绍"><a href="#开篇介绍" class="headerlink" title="开篇介绍"></a>开篇介绍</h3><blockquote>
+<p><strong>根据合适的场景使用特定的并发工具类,因地制宜的选择合适的并发工具类，对于我们解决并发问题事半功倍</strong><br>本文分场景，特点，介绍了各个并发工具类，源码和示例结合，站在巨人的肩膀上学习并发</p>
+</blockquote>
+<blockquote>
+<p>本文篇幅较长，建议收藏后，需要使用时可根据实际场景,并发工具类的特点来对症下药<br>本文介绍了常用的Java并发工具类及其适用场景<br>java并发包，有许多接口与类由著名并发大师 <strong>Doug Lea</strong> 定义和实现</p>
+</blockquote>
+<h3 id="Lock和Condition"><a href="#Lock和Condition" class="headerlink" title="Lock和Condition"></a>Lock和Condition</h3><p><strong>锁和条件变量,jdk1.5引入的接口,可以帮助我们解决共享资源互斥的问题</strong></p>
+<hr>
+<h4 id="Lock：锁"><a href="#Lock：锁" class="headerlink" title="Lock：锁"></a>Lock：锁</h4><ul>
+<li>lock():获取一个锁</li>
+<li>unlock()解锁</li>
+<li>newCondition()创建一个条件变量</li>
+<li>tryLock()尝试获取锁，获取了锁返回true，否则false</li>
+</ul>
+<p>常见实现:如ReentrantLock，即可重入锁，可以理解为是java关键字synchronized,代码层面的实现，其功能是一样的但其底层原理实现是不一样的</p>
+<blockquote>
+<p>Lock底层实现一般都是CAS原语(compareAndSwap)<br>synchronized底层实现是Monitor(管程，或叫监视器)</p>
+</blockquote>
+<h4 id="Condition：条件变量"><a href="#Condition：条件变量" class="headerlink" title="Condition：条件变量"></a>Condition：条件变量</h4><p>一把锁可以有多个条件变量，使用lock.newCondition()来创建Condition</p>
+<blockquote>
+<p>await(): 线程阻塞等待当前条件变量，需要其他线程调用对应实例的signal来唤醒<br>signal(): 唤醒一个此条件变量等待的线程<br>signalAll(): 唤醒全部此条件变量等待的线程</p>
+</blockquote>
+<hr>
+<h4 id="使用锁的最佳原则"><a href="#使用锁的最佳原则" class="headerlink" title="使用锁的最佳原则"></a>使用锁的最佳原则</h4><p>并发大师 Doug Lea《Java 并发编程：设计原则与模式》一书中，推荐的<strong>三个用锁的最佳实践</strong>，它们分别是</p>
+<ol>
+<li>永远只在更新对象的成员变量时加锁</li>
+<li>永远只在访问可变的成员变量时加锁</li>
+<li>永远不在调用其他对象的方法时加锁</li>
+</ol>
+<h3 id="Semaphore"><a href="#Semaphore" class="headerlink" title="Semaphore"></a>Semaphore</h3><p><strong>信号量，jdk1.5,Doug Lea</strong><br>信号量在java中的实现类是Semaphore<br>是一个具体的类，抽象化理解可以理解为红绿灯，<br>创建对象时需要穿入一个int类型的permits(凭证)，代表可进入临界区的线程数量</p>
+<blockquote>
+<p>acquire()，获得一个凭证，当凭证小于等于0时，此线程阻塞<br>release()，释放一个凭证,permits+1</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Semaphore</span> <span class="variable">semaphore</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Semaphore</span>(<span class="number">10</span>);</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">20</span>; i++) &#123;</span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Thread</span>(SemaphoreTest::doSomething).start();   </span><br><span class="line">&#125;&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">doSomething</span><span class="params">()</span> &#123;   </span><br><span class="line"><span class="keyword">try</span> &#123;    </span><br><span class="line">semaphore.acquire(); </span><br><span class="line">Thread.sleep(<span class="number">1000</span>);   </span><br><span class="line">System.out.println(Thread.currentThread().getName() + <span class="string">&quot; done&quot;</span>);  </span><br><span class="line">&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">e.printStackTrace();  </span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;  </span><br><span class="line">semaphore.release();   </span><br><span class="line">&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>如上代码代表，创建了10个凭证，使用acquire()方法来获取凭证，使用release()方法来释放凭证<br>当凭证不足（&lt;&#x3D;0）时，线程会等待，等待其他线程释放后，acquire()方法才会返回</p>
+<h3 id="ReadWriteLock"><a href="#ReadWriteLock" class="headerlink" title="ReadWriteLock"></a>ReadWriteLock</h3><p><strong>读写锁</strong></p>
+<ul>
+<li>适用于读多写少</li>
+<li>允许多个线程获取读锁</li>
+<li>只允许一个线程获取写锁</li>
+<li>只允许锁的降级，不允许锁的升级</li>
+<li>锁的升级:获取读锁时不释放读锁的情况下去获取写锁</li>
+<li>锁的降级:获取写锁时不释放写锁的情况下去获取读锁</li>
+<li>获取读锁的前提是没有线程在使用写锁</li>
+<li>获取写锁的前提是没有线程在使用读锁或写锁</li>
+<li>获取写锁不会中断其他线程获取读锁</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">ReadWriteLock</span> <span class="variable">rwl</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ReentrantReadWriteLock</span>(); </span><br><span class="line"><span class="comment">//读锁 </span></span><br><span class="line"><span class="type">Lock</span> <span class="variable">r</span> <span class="operator">=</span> rwl.readLock();</span><br><span class="line"><span class="comment">//写锁</span></span><br><span class="line"><span class="type">Lock</span> <span class="variable">w</span> <span class="operator">=</span> rwl.writeLock();</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="StampedLock"><a href="#StampedLock" class="headerlink" title="StampedLock"></a>StampedLock</h3><p><strong>标记锁，是读写锁的改进,其实现思想类似于乐观锁</strong></p>
+<ul>
+<li>支持写锁、悲观读锁和乐观读</li>
+<li>其中，写锁、悲观读锁的语义和 ReadWriteLock 的写锁、读锁的语义类似</li>
+</ul>
+<h4 id="写锁和悲观读示例"><a href="#写锁和悲观读示例" class="headerlink" title="写锁和悲观读示例"></a>写锁和悲观读示例</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> <span class="type">StampedLock</span> <span class="variable">sl</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StampedLock</span>();</span><br><span class="line"><span class="comment">// 获取/释放悲观读锁示意代码</span></span><br><span class="line"><span class="type">long</span> <span class="variable">stamp</span> <span class="operator">=</span> sl.readLock();</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="comment">//省略业务相关代码</span></span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">  sl.unlockRead(stamp);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 获取/释放写锁示意代码</span></span><br><span class="line"><span class="type">long</span> <span class="variable">stamp</span> <span class="operator">=</span> sl.writeLock();</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="comment">//省略业务相关代码</span></span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">  sl.unlockWrite(stamp);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="来自官方的乐观读示例"><a href="#来自官方的乐观读示例" class="headerlink" title="来自官方的乐观读示例"></a>来自官方的乐观读示例</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Point</span> &#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="type">int</span> x, y;</span><br><span class="line">  <span class="keyword">final</span> <span class="type">StampedLock</span> <span class="variable">sl</span> <span class="operator">=</span> </span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">StampedLock</span>();</span><br><span class="line">  <span class="comment">//计算到原点的距离  </span></span><br><span class="line">  <span class="type">int</span> <span class="title function_">distanceFromOrigin</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="comment">// 乐观读</span></span><br><span class="line">    <span class="type">long</span> <span class="variable">stamp</span> <span class="operator">=</span> </span><br><span class="line">      sl.tryOptimisticRead();</span><br><span class="line">    <span class="comment">// 读入局部变量，</span></span><br><span class="line">    <span class="comment">// 读的过程数据可能被修改</span></span><br><span class="line">    <span class="type">int</span> <span class="variable">curX</span> <span class="operator">=</span> x, curY = y;</span><br><span class="line">    <span class="comment">//判断执行读操作期间，</span></span><br><span class="line">    <span class="comment">//是否存在写操作，如果存在，</span></span><br><span class="line">    <span class="comment">//则sl.validate返回false</span></span><br><span class="line">    <span class="keyword">if</span> (!sl.validate(stamp))&#123;</span><br><span class="line">      <span class="comment">// 升级为悲观读锁</span></span><br><span class="line">      stamp = sl.readLock();</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">        curX = x;</span><br><span class="line">        curY = y;</span><br><span class="line">      &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        <span class="comment">//释放悲观读锁</span></span><br><span class="line">        sl.unlockRead(stamp);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> Math.sqrt(</span><br><span class="line">      curX * curX + curY * curY);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="CountDownLatch-和CyclicBarrier"><a href="#CountDownLatch-和CyclicBarrier" class="headerlink" title="CountDownLatch 和CyclicBarrier"></a>CountDownLatch 和CyclicBarrier</h3><p><strong>使用计数器来帮助协同线程工作</strong></p>
+<ul>
+<li>CountDownLatch ：常用于一个线程等待其他线程</li>
+<li>CyclicBarrier：常用于几个线程之间互相等待进行同步操作</li>
+</ul>
+<hr>
+<h4 id="CountDownLatch"><a href="#CountDownLatch" class="headerlink" title="CountDownLatch"></a>CountDownLatch</h4><ul>
+<li>类似于计数器,在减到0之前会被阻塞</li>
+<li>countDown()，计数器减少</li>
+<li>await()，线程等待，如果计数器大于0</li>
+</ul>
+<h4 id="CyclicBarrier"><a href="#CyclicBarrier" class="headerlink" title="CyclicBarrier"></a>CyclicBarrier</h4><ul>
+<li>类似于CountDownLatch,创建时需提供一个count，也可传入一个Runnable,当计数器减到0时调用</li>
+<li>当计数器减到0时会自动重置</li>
+</ul>
+<h3 id="并发容器"><a href="#并发容器" class="headerlink" title="并发容器"></a>并发容器</h3><h4 id="常用容器如何解决并发问题"><a href="#常用容器如何解决并发问题" class="headerlink" title="常用容器如何解决并发问题"></a><strong>常用容器如何解决并发问题</strong></h4><p>java容器主要有四个大类List,Map,Set,和Queue<br>如ArrayList、HashMap 但都不是线程安全<br>值得一提的,可以使用组合设计模式，来包装一个不安全的容器，使其变成线程安全的(包装起来，即访问方法增加synchronized修饰<br>jdk已经帮我们做了这件事</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Collections.synchronizedCollection();</span><br><span class="line">Collections.synchronizedList();</span><br><span class="line">Collections.synchronizedMap();</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="并发容器有哪些"><a href="#并发容器有哪些" class="headerlink" title="并发容器有哪些:"></a><strong>并发容器有哪些</strong>:</h4><h5 id="List"><a href="#List" class="headerlink" title="List"></a>List</h5><p>CopyOnWriteArrayList</p>
+<h5 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h5><p>CopyOnWriteArraySet<br>ConcurrentSkipListSet</p>
+<h5 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h5><p>ConcurrentHashMap<br>    key无序<br>ConcurrentSkipListMap<br>    key有序</p>
+<blockquote>
+<p>SkipList也叫跳表</p>
+</blockquote>
+<h5 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h5><blockquote>
+<p>Java 并发包里面 Queue 这类并发容器是最复杂的，你可以从以下两个维度来分类。<br>1.维度是阻塞与非阻.塞，所谓阻塞指的是当队列已满时，入队操作阻塞；当队列已空时，出队操作阻塞。<br>2.是单端与双端，单端指的是只能队尾入队，队首出队；而双端指的是队首队尾皆可入队出队。<br>Java 并发包里阻塞队列都用 Blocking 关键字标识，<br>单端队列使用 Queue 标识，双端队列使用 Deque 标识<br>另外还有一点需要额外注意，使用队列时千万要注意队列是否为有界队列,如为无界队列,当数据量太大时可能会OOM,而为有界队列时则需要注意拒绝策略</p>
+</blockquote>
+<p><strong>单端阻塞队列</strong><br>其实现有 ArrayBlockingQueue、LinkedBlockingQueue、SynchronousQueue、LinkedTransferQueue、PriorityBlockingQueue 和 DelayQueue。内部一般会持有一个队列，这个队列可以是数组（其实现是 ArrayBlockingQueue）也可以是链表（其实现是 LinkedBlockingQueue）；甚至还可以不持有队列（其实现是 SynchronousQueue），此时生产者线程的入队操作必须等待消费者线程的出队操作。而 LinkedTransferQueue 融合 LinkedBlockingQueue 和 SynchronousQueue 的功能，性能比 LinkedBlockingQueue 更好；PriorityBlockingQueue 支持按照优先级出队；DelayQueue 支持延时出队。<br><strong>双端阻塞队列</strong><br> LinkedBlockingDeque</p>
+<p><strong>单端非阻塞队列</strong><br> ConcurrentLinkedQueue</p>
+<p><strong>双端非阻塞队列</strong><br> ConcurrentLinkedDeque</p>
+<h3 id="原子类"><a href="#原子类" class="headerlink" title="原子类"></a>原子类</h3><ul>
+<li>类开头为AtomicXXX,常见的有:AtomicLong,AtomicInteger等</li>
+<li>原子类,无锁，实现机制源自CPU底层支持，所以其性能很好</li>
+<li>其实现是CPU提供的CAS指令(Compare And Swap即jdk里原子类都有的compareAndSet方法)<br>其实现往往伴随这自旋,即反复尝试至期望值相同后设置数值</li>
+</ul>
+<p>实现大致如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">SimulatedCAS</span>&#123;</span><br><span class="line">  <span class="type">int</span> count；</span><br><span class="line">  <span class="keyword">synchronized</span> <span class="type">int</span> <span class="title function_">cas</span><span class="params">(<span class="type">int</span> expect, <span class="type">int</span> newValue)</span>&#123;</span><br><span class="line">    <span class="comment">// 读目前count的值</span></span><br><span class="line">    <span class="type">int</span> <span class="variable">curValue</span> <span class="operator">=</span> count;</span><br><span class="line">    <span class="comment">// 比较目前count值是否==期望值</span></span><br><span class="line">    <span class="keyword">if</span>(curValue == expect)&#123;</span><br><span class="line">      <span class="comment">// 如果是，则更新count的值</span></span><br><span class="line">      count = newValue;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 返回写入前的值</span></span><br><span class="line">    <span class="keyword">return</span> curValue;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="Executor"><a href="#Executor" class="headerlink" title="Executor"></a>Executor</h3><p><strong>线程池，代表类:ThreadPoolExecutor</strong><br>可使用静态工厂方法来创建<br>Executors.newFixedThreadPool()…等<br><strong>但在各个大厂的开发规范里已经明确规定了严禁使用此静态工厂方法论来创建线程池<br>必须直接使用new ThreadPoolExecutor()方法来创建</strong><br>最主要的原因是，默认使用静态方法来创建都是无界队列，而这在生产环境如任务积累过多则可能导致OOM!所以一定要注意<br><strong>创建线程池最好使用有界队列!</strong></p>
+<p><strong>ThreadPoolExecutor参数列表详解</strong></p>
+<ul>
+<li>corePoolSize：表示线程池保有的最小线程数。有些项目很闲，但是也不能把人都撤了，至少要留 corePoolSize 个人坚守阵地。</li>
+<li>maximumPoolSize：表示线程池创建的最大线程数。当项目很忙时，就需要加人，但是也不能无限制地加，最多就加到 maximumPoolSize 个人。当项目闲下来时，就要撤人了，最多能撤到 corePoolSize 个人。</li>
+<li>keepAliveTime &amp; unit：上面提到项目根据忙闲来增减人员，那在编程世界里，如何定义忙和闲呢？很简单，一个线程如果在一段时间内，都没有执行任务，说明很闲，keepAliveTime 和 unit 就是用来定义这个“一段时间”的参数。也就是说，如果一个线程空闲了keepAliveTime &amp; unit这么久，而且线程池的线程数大于 corePoolSize ，那么这个空闲的线程就要被回收了。</li>
+<li>workQueue：工作队列，和上面示例代码的工作队列同义。threadFactory：通过这个参数你可以自定义如何创建线程，例如你可以给线程指定一个有意义的名字。</li>
+<li>handler：通过这个参数你可以自定义任务的拒绝策略。如果线程池中所有的线程都在忙碌，并且工作队列也满了（前提是工作队列是有界队列），那么此时提交任务，线程池就会拒绝接收。至于拒绝的策略，你可以通过 handler 这个参数来指定。<br>ThreadPoolExecutor 已经提供了以下 4 种策略。<br>CallerRunsPolicy：提交任务的线程自己去执行该任务。<br>AbortPolicy：默认的拒绝策略，会 throws RejectedExecutionException。<br>DiscardPolicy：直接丢弃任务，没有任何异常抛出。<br>DiscardOldestPolicy：丢弃最老的任务，其实就是把最早进入工作队列的任务丢弃，然后把新任务加入到工作队列。</li>
+</ul>
+<p><strong>注意事项:</strong><br>注意默认的拒绝策略会抛出<br>throw RejectedExecutionException<br>这是一个运行时异常，所以往往会被忽略</p>
+<h3 id="Future"><a href="#Future" class="headerlink" title="Future"></a>Future</h3><p><strong>可获取任务的执行结果</strong><br>线程池ExecutorService提供了三个提交任务的方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 提交Runnable任务</span></span><br><span class="line">Future&lt;?&gt; submit(Runnable task);</span><br><span class="line"><span class="comment">// 提交Callable任务</span></span><br><span class="line">&lt;T&gt; Future&lt;T&gt; <span class="title function_">submit</span><span class="params">(Callable&lt;T&gt; task)</span>;</span><br><span class="line"><span class="comment">// 提交Runnable任务及结果引用 ，result:相当于多了个入参，在执行完毕时也返回此result</span></span><br><span class="line"><span class="comment">// 可通过 future.get()来取得传入的result对象</span></span><br><span class="line">&lt;T&gt; Future&lt;T&gt; <span class="title function_">submit</span><span class="params">(Runnable task, T result)</span>;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Callable如Runable的区别是Runable没有返回值,Callable有返回值</p>
+</blockquote>
+<p><strong>Future有五个方法</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 取消任务,mayInterruptIfRunning:是否中断线程,true中断线程,false允许任务执行完</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">cancel</span><span class="params">(<span class="type">boolean</span> mayInterruptIfRunning)</span>;</span><br><span class="line"><span class="comment">// 判断任务是否已取消  </span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">isCancelled</span><span class="params">()</span>;</span><br><span class="line"><span class="comment">// 判断任务是否已结束</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">isDone</span><span class="params">()</span>;</span><br><span class="line"><span class="comment">// 获得任务执行结果，如未执行完毕，会导致阻塞</span></span><br><span class="line">get();</span><br><span class="line"><span class="comment">// 获得任务执行结果，支持超时</span></span><br><span class="line">get(<span class="type">long</span> timeout, TimeUnit unit);</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="CompletableFuture"><a href="#CompletableFuture" class="headerlink" title="CompletableFuture"></a>CompletableFuture</h3><p><strong>专注业务的异步编程，使代码更加简洁易懂</strong><br>使用时注意:<br>方法中带有async的代表异步执行<br>方法中带有supply(供应)的代表有返回值<br>方法参数列表可执行线程池Executor，如未指定则会使用默认的ForkJoinPool来执行任务(对应ForkJoinPool.commonPool())<br>这个线程池默认创建的线程数是 CPU 的核数（也可以通过 JVM<br>option:-Djava.util.concurrent.ForkJoinPool.common.parallelism 来设置 ForkJoinPool 线程池的线程数）<br><strong>当使用其做一些很慢的 操作如IO操作时，可能会拖垮整个应用，所以当任务非常耗时时应当指定线程池</strong></p>
+<hr>
+<p><strong>如何理解 CompletionStage 接口</strong></p>
+<p>任务是有时序关系的，比如有串行关系、并行关系、汇聚关系</p>
+<ul>
+<li><strong>串行关系</strong><ul>
+<li>串行执行，关键字:<strong>then</strong><br>  相关方法:thenApply、thenAccept、thenRun 和 thenCompose等</li>
+</ul>
+</li>
+<li><strong>并行关系</strong><ul>
+<li>并行执行,关键字:<strong>Async</strong><br>相关方法thenApplyAsync,thenAcceptAsync,thenRunAsync等</li>
+</ul>
+</li>
+<li><strong>汇聚关系</strong><br>  依赖于多个任务执行完毕后才执行<br>  相关方法:<ul>
+<li>And汇聚<br>  关键字:<strong>Combine</strong>(结合),<strong>Both</strong>(双方..)<br>  thenCombine、thenAcceptBoth 和 runAfterBoth系列</li>
+<li>Or汇聚<br>  关键字:<strong>either</strong>(或者)<br>  applyToEither、acceptEither 和 runAfterEither 系列</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><strong>异常处理</strong><br>发生异常时执行类似于try{}catch{}中的catch</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CompletionStage <span class="title function_">exceptionally</span><span class="params">(fn)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>不管是否发生异常都会执行类似于try{}finally{}中的finally<br><strong>whenComplete() 和 handle() 的区别在于 whenComplete() 不支持返回结果，而 handle() 是支持返回结果的</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CompletionStage&lt;R&gt; <span class="title function_">whenComplete</span><span class="params">(consumer)</span>;</span><br><span class="line">CompletionStage&lt;R&gt; <span class="title function_">whenCompleteAsync</span><span class="params">(consumer)</span>;</span><br><span class="line">CompletionStage&lt;R&gt; <span class="title function_">handle</span><span class="params">(fn)</span>;</span><br><span class="line">CompletionStage&lt;R&gt; <span class="title function_">handleAsync</span><span class="params">(fn)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>最后附上使用CompletableFuture实现的烧水泡茶程序</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//任务1：洗水壶-&gt;烧开水</span></span><br><span class="line">CompletableFuture&lt;Void&gt; f1 = </span><br><span class="line">  CompletableFuture.runAsync(()-&gt;&#123;</span><br><span class="line">  System.out.println(<span class="string">&quot;T1:洗水壶...&quot;</span>);</span><br><span class="line">  sleep(<span class="number">1</span>, TimeUnit.SECONDS);</span><br><span class="line"></span><br><span class="line">  System.out.println(<span class="string">&quot;T1:烧开水...&quot;</span>);</span><br><span class="line">  sleep(<span class="number">15</span>, TimeUnit.SECONDS);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//任务2：洗茶壶-&gt;洗茶杯-&gt;拿茶叶</span></span><br><span class="line">CompletableFuture&lt;String&gt; f2 = </span><br><span class="line">  CompletableFuture.supplyAsync(()-&gt;&#123;</span><br><span class="line">  System.out.println(<span class="string">&quot;T2:洗茶壶...&quot;</span>);</span><br><span class="line">  sleep(<span class="number">1</span>, TimeUnit.SECONDS);</span><br><span class="line"></span><br><span class="line">  System.out.println(<span class="string">&quot;T2:洗茶杯...&quot;</span>);</span><br><span class="line">  sleep(<span class="number">2</span>, TimeUnit.SECONDS);</span><br><span class="line"></span><br><span class="line">  System.out.println(<span class="string">&quot;T2:拿茶叶...&quot;</span>);</span><br><span class="line">  sleep(<span class="number">1</span>, TimeUnit.SECONDS);</span><br><span class="line">  <span class="keyword">return</span> <span class="string">&quot;龙井&quot;</span>;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//任务3：任务1和任务2完成后执行：泡茶</span></span><br><span class="line">CompletableFuture&lt;String&gt; f3 = </span><br><span class="line">  f1.thenCombine(f2, (__, tf)-&gt;&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;T1:拿到茶叶:&quot;</span> + tf);</span><br><span class="line">    System.out.println(<span class="string">&quot;T1:泡茶...&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;上茶:&quot;</span> + tf;</span><br><span class="line">  &#125;);</span><br><span class="line"><span class="comment">//等待任务3执行结果</span></span><br><span class="line">System.out.println(f3.join());</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">sleep</span><span class="params">(<span class="type">int</span> t, TimeUnit u)</span> &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    u.sleep(t);</span><br><span class="line">  &#125;<span class="keyword">catch</span>(InterruptedException e)&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 一次执行结果：</span></span><br><span class="line">T1:洗水壶...</span><br><span class="line">T2:洗茶壶...</span><br><span class="line">T1:烧开水...</span><br><span class="line">T2:洗茶杯...</span><br><span class="line">T2:拿茶叶...</span><br><span class="line">T1:拿到茶叶:龙井</span><br><span class="line">T1:泡茶...</span><br><span class="line">上茶:龙井</span><br></pre></td></tr></table></figure>
+
+<h3 id="CompletionService"><a href="#CompletionService" class="headerlink" title="CompletionService"></a>CompletionService</h3><p>其实现时内部维护了个阻塞队列，来存放完成的任务<br>所以<strong>可以让批量提交的异步任务有序化</strong>，先执行完的先进入阻塞队列<br><strong>如获取最先完成任务的结果，一个任务完成后可以进行 其他操作，而不需要无谓的等待</strong></p>
+<p>如下为使用CompletionService实现的，获取最快执行的任务并返回<br>使用案例如:<br>Dubbo 中的 Forking Cluster,Forking 的集群模式,其可以并行地调用多个查询服务，只要有一个成功返回结果，整个服务就可以返回了</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建线程池</span></span><br><span class="line"><span class="type">ExecutorService</span> <span class="variable">executor</span> <span class="operator">=</span></span><br><span class="line">  Executors.newFixedThreadPool(<span class="number">3</span>);</span><br><span class="line"><span class="comment">// 创建CompletionService</span></span><br><span class="line">CompletionService&lt;Integer&gt; cs =</span><br><span class="line">  <span class="keyword">new</span> <span class="title class_">ExecutorCompletionService</span>&lt;&gt;(executor);</span><br><span class="line"><span class="comment">// 用于保存Future对象</span></span><br><span class="line">List&lt;Future&lt;Integer&gt;&gt; futures =</span><br><span class="line">  <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(<span class="number">3</span>);</span><br><span class="line"><span class="comment">//提交异步任务，并保存future到futures </span></span><br><span class="line">futures.add(</span><br><span class="line">  cs.submit(()-&gt;geocoderByS1()));</span><br><span class="line">futures.add(</span><br><span class="line">  cs.submit(()-&gt;geocoderByS2()));</span><br><span class="line">futures.add(</span><br><span class="line">  cs.submit(()-&gt;geocoderByS3()));</span><br><span class="line"><span class="comment">// 获取最快返回的任务执行结果</span></span><br><span class="line"><span class="type">Integer</span> <span class="variable">r</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="comment">// 只要有一个成功返回，则break</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">3</span>; ++i) &#123;</span><br><span class="line">    r = cs.take().get();</span><br><span class="line">    <span class="comment">//简单地通过判空来检查是否成功返回</span></span><br><span class="line">    <span class="keyword">if</span> (r != <span class="literal">null</span>) &#123;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">  <span class="comment">//取消所有任务</span></span><br><span class="line">  <span class="keyword">for</span>(Future&lt;Integer&gt; f : futures)</span><br><span class="line">    f.cancel(<span class="literal">true</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 返回结果</span></span><br><span class="line"><span class="keyword">return</span> r;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Fork-Join：单机版的MapReduce"><a href="#Fork-Join：单机版的MapReduce" class="headerlink" title="Fork&#x2F;Join：单机版的MapReduce"></a>Fork&#x2F;Join：单机版的MapReduce</h3><blockquote>
+<p><strong>关键字</strong>:<br>ForkJoinPool,ForkJoinTask,Fork：分叉,Join:汇聚合并<br>核心思想为分治,即分而治之:将任务拆分至一个个子任务至不可拆分,后将任务结果逐个合并至最终结果<br><strong>知识点总结</strong><br>支持<strong>任务窃取</strong>,保证不会有的线程程很忙，而有的线程很闲的状况<br>类似于大数据处理中的所以可以把 Fork&#x2F;Join 看作单机版的 <strong>MapReduce</strong>。<br>Stream API的并行流也是基于ForkJoinPool，不过需要注意的是默认情况下所有的并行流计算都共享一个 ForkJoinPool,ForkJoinPool 默认的线程数是 CPU 的核数(ForkJoinPool.commonPool()),所以<strong>当使用并行流或者公共的ForkJoinPool时需要注意不能使用如密集型IO操作</strong>(因为可能很慢且耗时),否则可能会导致执行任务过慢导致拖垮其他使用此默认ForkJoinPoll的任务执行速度，进而拖垮整个应用的响应速度，<br>所以<strong>建议用不同的 ForkJoinPool 执行不同类型的计算任务</strong></p>
+</blockquote>
+<p>另附链接<br><a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/article/1146802219354112%22%3Ehttps://www.liaoxuefeng.com/article/1146802219354112">廖雪峰讲解的ForkJoinPool</a><br><a target="_blank" rel="noopener" href="http://gee.cs.oswego.edu/dl/papers/fj.pdf%22%3Ehttp://gee.cs.oswego.edu/dl/papers/fj.pdf">Doug Lea的 ForkJoinPool论文</a></p>
+<hr>
+<p>Fork&#x2F;Join 是一个并行计算的框架，主要就是用来支持分治任务模型的，<br>这个计算框架里的 <strong>Fork 对应的是分治任务模型里的任务分解，Join 对应的是结果合并。</strong><br>Fork&#x2F;Join 计算框架主要包含两部分，一部分是<strong>分治任务的线程池 ForkJoinPool</strong>，另一部分是<strong>分治任务 ForkJoinTask</strong>。这两部分的关系类似于 ThreadPoolExecutor 和 Runnable 的关系，都可以理解为提交任务到线程池，只不过分治任务有自己独特类型 ForkJoinTask。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/10/%E5%B9%B6%E5%8F%91%E6%8A%80%E6%9C%AF/%E5%B9%B6%E5%8F%91%E5%9C%BA%E6%99%AF%E4%B8%8B%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="prev" title="并发场景下的设计模式">
+                  <i class="fa fa-angle-left"></i> 并发场景下的设计模式
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/08/mysql%E6%8A%80%E6%9C%AF%E5%86%85%E5%B9%95%E7%AC%94%E8%AE%B0/Note/" rel="next" title="数据库Note">
+                  数据库Note <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Link Sun</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

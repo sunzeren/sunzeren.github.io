@@ -1,0 +1,501 @@
+[2023-02-10 05:30:28][pool-7-thread-2]delete key[orderCloseReport_changeReportDataLockKey_9e0e5237781d407380c34ab153f18871_1030134790000221894989364248] 
+[2023-02-10 05:30:28][pool-7-thread-1]delete key[orderCloseReport_changeReportDataLockKey_42d4f14a6b884adcb985d0e067566c15_1030184730000221895249373000] 
+[2023-02-10 05:30:28][pool-7-thread-3]delete key[orderCloseReport_changeReportDataLockKey_9ba47f578c83401e8e0b90f839353ae6_1030978320000221897732415596] 
+[2023-02-10 05:30:28][pool-7-thread-10]delete key[orderCloseReport_changeReportDataLockKey_77e5eb505fbd4110b15fe400f24bbe89_1030414890000221894892892781] 
+[2023-02-10 05:30:28][pool-7-thread-15]delete key[orderCloseReport_changeReportDataLockKey_886f736672b04b7282da19b913674a68_1030753770000221895152904127] 
+      :  
+      :  
+[2023-02-10 05:30:28][pool-7-thread-14]delete key[orderCloseReport_changeReportDataLockKey_d9a204ba406147c9b68df5d22983d96b_1030955990000221889951950272] 
+[2023-02-10 05:30:28][pool-7-thread-7]delete key[orderCloseReport_changeReportDataLockKey_26c74e9570ce4c708378967a8b2643d4_1030342090000221890040031457] 
+[2023-02-10 05:30:28][pool-7-thread-11]delete key[orderCloseReport_changeReportDataLockKey_f21f49b60b1142658391c3814dd84e41_1030136920000221894452487832] 
+[2023-02-10 05:30:28][pool-7-thread-9]delete key[orderCloseReport_changeReportDataLockKey_41e9c0549f7b403689cfaf46913513db_1030258620000221895157134844] 
+[2023-02-10 05:30:32][pool-7-thread-8]成功获取到key[orderCloseReport_changeReportDataLockKey_9901376bfe3342d1a13935d1faadfc91_1030137800000221895228400210]锁 
+[2023-02-10 05:30:32][pool-7-thread-4]成功获取到key[orderCloseReport_changeReportDataLockKey_0294df7336fd42c6b6e2b9ae31ea3a6a_1030328120000221895152903754]锁 
+[2023-02-10 05:30:32][pool-7-thread-6]成功获取到key[orderCloseReport_changeReportDataLockKey_a503aa9f15f94118aa5e1e2ab28d31a1_1030674480000221895501034135]锁 
+[2023-02-10 05:30:32][pool-7-thread-12]成功获取到key[orderCloseReport_changeReportDataLockKey_56c1ea5cb83241e386b1342b1401b237_1030802860000221889889034942]锁 
+[2023-02-10 05:30:32][pool-7-thread-13]成功获取到key[orderCloseReport_changeReportDataLockKey_cb109fc911f747ee9f43ce1b262cb61a_1030699150000221897665307401]锁 
+[2023-02-10 05:30:32][pool-7-thread-3]成功获取到key[orderCloseReport_changeReportDataLockKey_4339d60fab5249a3b62aa0a8f438f43e_1030329630000221897782755300]锁 
+[2023-02-10 05:30:32][pool-7-thread-14]成功获取到key[orderCloseReport_changeReportDataLockKey_cc76bca0bc6a41c383c3dab9bf3c8b9a_1030522090000221894586704315]锁 
+[2023-02-10 05:30:32][pool-7-thread-5]成功获取到key[orderCloseReport_changeReportDataLockKey_3686768157514abca57ed52938a8784d_1030424860000221895249373023]锁 
+[2023-02-10 05:30:32][pool-7-thread-9]成功获取到key[orderCloseReport_changeReportDataLockKey_da74b1a1e27f4e60af973be8da8014e0_1030651080000221895022918406]锁 
+[2023-02-10 05:30:32][pool-7-thread-15]成功获取到key[orderCloseReport_changeReportDataLockKey_5601845b70e74614b7fa5b03befb4b36_1030307730000221889993897290]锁 
+[2023-02-10 05:30:32][pool-7-thread-16]成功获取到key[orderCloseReport_changeReportDataLockKey_ab738930e3bf49ab8e6e3d63b45ed549_1030508470000221897732415581]锁 
+[2023-02-10 05:30:32][pool-7-thread-9]delete key[orderCloseReport_changeReportDataLockKey_da74b1a1e27f4e60af973be8da8014e0_1030651080000221895022918406] 
+[2023-02-10 05:30:32][pool-7-thread-5]delete key[orderCloseReport_changeReportDataLockKey_3686768157514abca57ed52938a8784d_1030424860000221895249373023] 
+[2023-02-10 05:30:32][pool-7-thread-6]delete key[orderCloseReport_changeReportDataLockKey_a503aa9f15f94118aa5e1e2ab28d31a1_1030674480000221895501034135] 
+[2023-02-10 05:30:32][pool-7-thread-16]delete key[orderCloseReport_changeReportDataLockKey_ab738930e3bf49ab8e6e3d63b45ed549_1030508470000221897732415581] 
+[2023-02-10 05:30:32][pool-7-thread-12]delete key[orderCloseReport_changeReportDataLockKey_56c1ea5cb83241e386b1342b1401b237_1030802860000221889889034942] 
+[2023-02-10 05:30:32][pool-7-thread-3]delete key[orderCloseReport_changeReportDataLockKey_4339d60fab5249a3b62aa0a8f438f43e_1030329630000221897782755300] 
+[2023-02-10 05:30:32][pool-7-thread-8]delete key[orderCloseReport_changeReportDataLockKey_9901376bfe3342d1a13935d1faadfc91_1030137800000221895228400210] 
+[2023-02-10 05:30:32][pool-7-thread-2]成功获取到key[orderCloseReport_changeReportDataLockKey_98f296476aef4e2e9e4601cf69fad290_1030863480000221895157102236]锁 
+[2023-02-10 05:30:32][pool-7-thread-2]delete key[orderCloseReport_changeReportDataLockKey_98f296476aef4e2e9e4601cf69fad290_1030863480000221895157102236] 
+[2023-02-10 05:30:32][pool-7-thread-13]delete key[orderCloseReport_changeReportDataLockKey_cb109fc911f747ee9f43ce1b262cb61a_1030699150000221897665307401] 
+[2023-02-10 05:30:32][pool-7-thread-15]delete key[orderCloseReport_changeReportDataLockKey_5601845b70e74614b7fa5b03befb4b36_1030307730000221889993897290] 
+[2023-02-10 05:30:32][pool-7-thread-14]delete key[orderCloseReport_changeReportDataLockKey_cc76bca0bc6a41c383c3dab9bf3c8b9a_1030522090000221894586704315] 
+[2023-02-10 05:30:32][pool-7-thread-4]delete key[orderCloseReport_changeReportDataLockKey_0294df7336fd42c6b6e2b9ae31ea3a6a_1030328120000221895152903754] 
+[2023-02-10 05:30:32][pool-7-thread-9]成功获取到key[orderCloseReport_changeReportDataLockKey_f855a18461584eff8e0aa8dcd398e2dc_1030740080000221890010669270]锁 
+[2023-02-10 05:30:32][pool-7-thread-11]成功获取到key[orderCloseReport_changeReportDataLockKey_e58c79145fae4670ae14d64d2a227bac_1030531580000221889889034956]锁 
+[2023-02-10 05:30:32][pool-7-thread-9]delete key[orderCloseReport_changeReportDataLockKey_f855a18461584eff8e0aa8dcd398e2dc_1030740080000221890010669270] 
+[2023-02-10 05:30:32][pool-7-thread-11]delete key[orderCloseReport_changeReportDataLockKey_e58c79145fae4670ae14d64d2a227bac_1030531580000221889889034956] 
+[2023-02-10 05:30:34][pool-7-thread-1]成功获取到key[orderCloseReport_changeReportDataLockKey_e59bbec328564cc18ba62146f0964dee_1030475270000221889951950212]锁 
+[2023-02-10 05:30:34][pool-7-thread-5]成功获取到key[orderCloseReport_changeReportDataLockKey_b57943afc92d47dd83ab0c70fc0ee437_1030609040000221897237493149]锁 
+[2023-02-10 05:30:34][pool-7-thread-6]成功获取到key[orderCloseReport_changeReportDataLockKey_6f7312b21eb84068b7b6f14826f29d53_1030643950000221889847091478]锁 
+[2023-02-10 05:30:34][pool-7-thread-16]成功获取到key[orderCloseReport_changeReportDataLockKey_25e1e54b84744d0e9dc2b17eed35e4b5_1030572570000221890040031052]锁 
+[2023-02-10 05:30:34][pool-7-thread-6]delete key[orderCloseReport_changeReportDataLockKey_6f7312b21eb84068b7b6f14826f29d53_1030643950000221889847091478] 
+[2023-02-10 05:30:34][pool-7-thread-5]delete key[orderCloseReport_changeReportDataLockKey_b57943afc92d47dd83ab0c70fc0ee437_1030609040000221897237493149] 
+      :  
+      :  
+[2023-02-10 05:30:34][pool-7-thread-1]delete key[orderCloseReport_changeReportDataLockKey_e59bbec328564cc18ba62146f0964dee_1030475270000221889951950212] 
+      :  
+[2023-02-10 05:30:37][pool-7-thread-4]成功获取到key[orderCloseReport_changeReportDataLockKey_3ebb93741ed24e83aaf33f5d368e1d5a_1030421120000221894859334511]锁 
+[2023-02-10 05:30:37][pool-7-thread-10]成功获取到key[orderCloseReport_changeReportDataLockKey_034bbda191584db9b3f851121e543d45_1030671790000221897619169988]锁 
+[2023-02-10 05:30:37][pool-7-thread-2]成功获取到key[orderCloseReport_changeReportDataLockKey_750760e2850f471dbe5f4d18c08760b9_1030273550000221890170053889]锁 
+[2023-02-10 05:30:37][pool-7-thread-6]成功获取到key[orderCloseReport_changeReportDataLockKey_8cd1e61d1fe54ebb81d7e4c82803d91d_1030683750000221895157102250]锁 
+[2023-02-10 05:30:37][pool-7-thread-7]成功获取到key[orderCloseReport_changeReportDataLockKey_5164c12353f849c6833b48235343e6a1_1030306810000221894880307716]锁 
+[2023-02-10 05:30:37][pool-7-thread-14]成功获取到key[orderCloseReport_changeReportDataLockKey_a0931cb059ba4d31ade48d93012b2527_1030805770000221897619170410]锁 
+[2023-02-10 05:30:37][pool-7-thread-15]成功获取到key[orderCloseReport_changeReportDataLockKey_b6b842ddc83940ccb34eb1ba77c4e6cb_1030331760000221897950522765]锁 
+[2023-02-10 05:30:37][pool-7-thread-2]delete key[orderCloseReport_changeReportDataLockKey_750760e2850f471dbe5f4d18c08760b9_1030273550000221890170053889] 
+[2023-02-10 05:30:37][pool-7-thread-6]delete key[orderCloseReport_changeReportDataLockKey_8cd1e61d1fe54ebb81d7e4c82803d91d_1030683750000221895157102250] 
+[2023-02-10 05:30:37][pool-7-thread-14]delete key[orderCloseReport_changeReportDataLockKey_a0931cb059ba4d31ade48d93012b2527_1030805770000221897619170410] 
+[2023-02-10 05:30:37][pool-7-thread-16]delete key[orderCloseReport_changeReportDataLockKey_25e1e54b84744d0e9dc2b17eed35e4b5_1030572570000221890040031052] 
+[2023-02-10 05:30:37][pool-7-thread-4]delete key[orderCloseReport_changeReportDataLockKey_3ebb93741ed24e83aaf33f5d368e1d5a_1030421120000221894859334511] 
+[2023-02-10 05:30:37][pool-7-thread-9]成功获取到key[orderCloseReport_changeReportDataLockKey_daf564909250407ab4c4c66cc2c2e211_1030923580000221890115526659]锁 
+[2023-02-10 05:30:37][pool-7-thread-7]delete key[orderCloseReport_changeReportDataLockKey_5164c12353f849c6833b48235343e6a1_1030306810000221894880307716] 
+[2023-02-10 05:30:37][pool-7-thread-10]delete key[orderCloseReport_changeReportDataLockKey_034bbda191584db9b3f851121e543d45_1030671790000221897619169988] 
+[2023-02-10 05:30:37][pool-7-thread-9]delete key[orderCloseReport_changeReportDataLockKey_daf564909250407ab4c4c66cc2c2e211_1030923580000221890115526659] 
+[2023-02-10 05:30:37][pool-7-thread-15]delete key[orderCloseReport_changeReportDataLockKey_b6b842ddc83940ccb34eb1ba77c4e6cb_1030331760000221897950522765] 
+[2023-02-10 05:30:40][pool-7-thread-3]成功获取到key[orderCloseReport_changeReportDataLockKey_57212f6afbc044ebbad12ac992cb1874_1030604440000221889591239776]锁 
+[2023-02-10 05:30:40][pool-7-thread-12]成功获取到key[orderCloseReport_changeReportDataLockKey_7d8ef4a71e944775987d5b2b94016ffe_1030765990000221897824690302]锁 
+[2023-02-10 05:30:40][pool-7-thread-13]成功获取到key[orderCloseReport_changeReportDataLockKey_9f959bed4b4a41778af95908b1e59b7b_1030673720000221889951950500]锁 
+[2023-02-10 05:30:40][pool-7-thread-11]成功获取到key[orderCloseReport_changeReportDataLockKey_cecf9c08e3464f28bb80fe3018324326_1030807230000221890111340228]锁 
+[2023-02-10 05:30:40][pool-7-thread-12]delete key[orderCloseReport_changeReportDataLockKey_7d8ef4a71e944775987d5b2b94016ffe_1030765990000221897824690302] 
+[2023-02-10 05:30:40][pool-7-thread-2]成功获取到key[orderCloseReport_changeReportDataLockKey_ec2ab355f1ca414d8e0d462e35d12ad4_1030694890000221894934838866]锁 
+[2023-02-10 05:30:40][pool-7-thread-13]delete key[orderCloseReport_changeReportDataLockKey_9f959bed4b4a41778af95908b1e59b7b_1030673720000221889951950500] 
+      :  
+      :  
+[2023-02-10 05:30:40][pool-7-thread-2]delete key[orderCloseReport_changeReportDataLockKey_ec2ab355f1ca414d8e0d462e35d12ad4_1030694890000221894934838866] 
+[2023-02-10 05:30:42][pool-7-thread-6]成功获取到key[orderCloseReport_changeReportDataLockKey_66a9af0da9f3463a8b94721bf1628170_1030846110000221897518509494]锁 
+[2023-02-10 05:30:42][pool-7-thread-14]成功获取到key[orderCloseReport_changeReportDataLockKey_8a2cc2391ddf464da3f4da52f145e012_1030178340000221897380095061]锁 
+[2023-02-10 05:30:42][pool-7-thread-4]成功获取到key[orderCloseReport_changeReportDataLockKey_394a3f3913804ceb99ea794adad2f89c_1030740050000221897644342529]锁 
+[2023-02-10 05:30:42][pool-7-thread-16]成功获取到key[orderCloseReport_changeReportDataLockKey_9f61e915b3f54f908dc3238d0d102318_1030665130000221889993897882]锁 
+[2023-02-10 05:30:42][pool-7-thread-9]成功获取到key[orderCloseReport_changeReportDataLockKey_5d835c0467974a19a8b474f5f925cdc8_1030755420000221894892892517]锁 
+[2023-02-10 05:30:42][pool-7-thread-1]成功获取到key[orderCloseReport_changeReportDataLockKey_71daa3997f0648afb07b52d2f17d89da_1030823920000221895228400003]锁 
+[2023-02-10 05:30:42][pool-7-thread-5]成功获取到key[orderCloseReport_changeReportDataLockKey_75170f969df84a58ab2d96c6a6591337_1030714200000221897820497795]锁 
+[2023-02-10 05:30:42][pool-7-thread-7]成功获取到key[orderCloseReport_changeReportDataLockKey_cad8f37a688b4c01ab3982adf291d7cb_1030675250000221889863869552]锁 
+[2023-02-10 05:30:42][pool-7-thread-15]成功获取到key[orderCloseReport_changeReportDataLockKey_d8e04583228b47f7bf9be51f2a19dad7_1030615480000221889847091498]锁 
+[2023-02-10 05:30:42][pool-7-thread-10]成功获取到key[orderCloseReport_changeReportDataLockKey_f214bb3d1e5f405d9b66d7073f7a26cf_1030280170000221894825786934]锁 
+[2023-02-10 05:30:42][pool-7-thread-13]成功获取到key[orderCloseReport_changeReportDataLockKey_42dc9e5772bc4bf19f8af5d7640657a1_1030613210000221894825782293]锁 
+[2023-02-10 05:30:42][pool-7-thread-12]成功获取到key[orderCloseReport_changeReportDataLockKey_59f7710db9e24f2dbf02c7569b4dd671_1030174090000221897619170429]锁 
+[2023-02-10 05:30:42][pool-7-thread-8]成功获取到key[orderCloseReport_changeReportDataLockKey_a5e467bd8cbe4f8c997212e551a81dd7_1030131780000221895178068465]锁 
+[2023-02-10 05:30:42][pool-7-thread-3]delete key[orderCloseReport_changeReportDataLockKey_57212f6afbc044ebbad12ac992cb1874_1030604440000221889591239776] 
+[2023-02-10 05:30:43][pool-7-thread-12]delete key[orderCloseReport_changeReportDataLockKey_59f7710db9e24f2dbf02c7569b4dd671_1030174090000221897619170429] 
+[2023-02-10 05:30:43][pool-7-thread-15]delete key[orderCloseReport_changeReportDataLockKey_d8e04583228b47f7bf9be51f2a19dad7_1030615480000221889847091498] 
+[2023-02-10 05:30:43][pool-7-thread-11]delete key[orderCloseReport_changeReportDataLockKey_cecf9c08e3464f28bb80fe3018324326_1030807230000221890111340228] 
+[2023-02-10 05:30:43][pool-7-thread-13]delete key[orderCloseReport_changeReportDataLockKey_42dc9e5772bc4bf19f8af5d7640657a1_1030613210000221894825782293] 
+[2023-02-10 05:30:43][pool-7-thread-16]delete key[orderCloseReport_changeReportDataLockKey_9f61e915b3f54f908dc3238d0d102318_1030665130000221889993897882] 
+[2023-02-10 05:30:43][pool-7-thread-7]delete key[orderCloseReport_changeReportDataLockKey_cad8f37a688b4c01ab3982adf291d7cb_1030675250000221889863869552] 
+[2023-02-10 05:30:43][SimpleAsyncTaskExecutor-30147215]delete key[regenerate_business_range_new_key_1990378] 
+[2023-02-10 05:30:43][SimpleAsyncTaskExecutor-30147215]成功获取到key[regenerate_business_range_new_key_3230281]锁 
+[2023-02-10 05:30:43][pool-7-thread-14]delete key[orderCloseReport_changeReportDataLockKey_8a2cc2391ddf464da3f4da52f145e012_1030178340000221897380095061] 
+[2023-02-10 05:30:43][pool-7-thread-5]delete key[orderCloseReport_changeReportDataLockKey_75170f969df84a58ab2d96c6a6591337_1030714200000221897820497795] 
+[2023-02-10 05:30:43][pool-7-thread-8]delete key[orderCloseReport_changeReportDataLockKey_a5e467bd8cbe4f8c997212e551a81dd7_1030131780000221895178068465] 
+[2023-02-10 05:30:45][pool-7-thread-6]delete key[orderCloseReport_changeReportDataLockKey_66a9af0da9f3463a8b94721bf1628170_1030846110000221897518509494] 
+[2023-02-10 05:30:45][pool-7-thread-16]成功获取到key[orderCloseReport_changeReportDataLockKey_bb51f24b8607439fb839f77c47628dc1_1030366150000221897292017623]锁 
+[2023-02-10 05:30:45][pool-7-thread-7]成功获取到key[orderCloseReport_changeReportDataLockKey_7f773ddb6473445fbc367911d18cc856_1030789490000221889511549856]锁 
+[2023-02-10 05:30:45][pool-7-thread-2]成功获取到key[orderCloseReport_changeReportDataLockKey_c6ed659667bc489dbcb9b5794dba98f3_1030320410000221895287120541]锁 
+[2023-02-10 05:30:45][pool-7-thread-12]成功获取到key[orderCloseReport_changeReportDataLockKey_8bfa08cf5160470e995737bea5d5a43e_1030599850000221897686281737]锁 
+[2023-02-10 05:30:45][pool-7-thread-14]成功获取到key[orderCloseReport_changeReportDataLockKey_965ad2ee792d43c6b04d452077ff403c_1030509270000221897518509813]锁 
+[2023-02-10 05:30:45][pool-7-thread-5]成功获取到key[orderCloseReport_changeReportDataLockKey_f80768ef7e5a47da865430e4b8f448b3_1030792730000221889842897829]锁 
+[2023-02-10 05:30:45][pool-7-thread-11]成功获取到key[orderCloseReport_changeReportDataLockKey_152d9c3e32cf427b997b1e8bc6b45e4e_1030999420000221895131971093]锁 
+[2023-02-10 05:30:45][pool-7-thread-9]delete key[orderCloseReport_changeReportDataLockKey_5d835c0467974a19a8b474f5f925cdc8_1030755420000221894892892517] 
+[2023-02-10 05:30:45][pool-7-thread-11]delete key[orderCloseReport_changeReportDataLockKey_152d9c3e32cf427b997b1e8bc6b45e4e_1030999420000221895131971093] 
+[2023-02-10 05:30:45][pool-7-thread-4]delete key[orderCloseReport_changeReportDataLockKey_394a3f3913804ceb99ea794adad2f89c_1030740050000221897644342529] 
+[2023-02-10 05:30:45][pool-7-thread-1]delete key[orderCloseReport_changeReportDataLockKey_71daa3997f0648afb07b52d2f17d89da_1030823920000221895228400003] 
+[2023-02-10 05:30:45][pool-7-thread-10]delete key[orderCloseReport_changeReportDataLockKey_f214bb3d1e5f405d9b66d7073f7a26cf_1030280170000221894825786934] 
+[2023-02-10 05:30:45][pool-7-thread-14]delete key[orderCloseReport_changeReportDataLockKey_965ad2ee792d43c6b04d452077ff403c_1030509270000221897518509813] 
+      :  
+      :  
+[2023-02-10 05:30:47][pool-7-thread-8]成功获取到key[orderCloseReport_changeReportDataLockKey_a8154304bf544d1fb300f4865b24f6eb_1030893400000221894989364016]锁 
+[2023-02-10 05:30:47][pool-7-thread-15]成功获取到key[orderCloseReport_changeReportDataLockKey_8ec788be6f844a9a8bb505c56191939c_1030259280000221897795333062]锁 
+[2023-02-10 05:30:47][pool-7-thread-11]成功获取到key[orderCloseReport_changeReportDataLockKey_672ddd6b14fb4b8398401ee1514c294e_1030929800000221895333265037]锁 
+[2023-02-10 05:30:47][pool-7-thread-10]成功获取到key[orderCloseReport_changeReportDataLockKey_96ddd56220e749849de5339494532106_1030872510000221895249372834]锁 
+[2023-02-10 05:30:47][pool-7-thread-6]成功获取到key[orderCloseReport_changeReportDataLockKey_389ff0ef4f4e4a6b9dbf9c5ba2bb4e29_1030369750000221894809003602]锁 
+[2023-02-10 05:30:47][pool-7-thread-1]成功获取到key[orderCloseReport_changeReportDataLockKey_0fb4c8a82a9e4f23b6e1177b4246cca3_1030276560000221897644342675]锁 
+[2023-02-10 05:30:47][pool-7-thread-9]成功获取到key[orderCloseReport_changeReportDataLockKey_7092dc278a934248be0701a280d547f8_1030180410000221895022917989]锁 
+[2023-02-10 05:30:47][pool-7-thread-16]delete key[orderCloseReport_changeReportDataLockKey_bb51f24b8607439fb839f77c47628dc1_1030366150000221897292017623] 
+[2023-02-10 05:30:47][pool-7-thread-5]delete key[orderCloseReport_changeReportDataLockKey_f80768ef7e5a47da865430e4b8f448b3_1030792730000221889842897829] 
+[2023-02-10 05:30:47][pool-7-thread-7]delete key[orderCloseReport_changeReportDataLockKey_7f773ddb6473445fbc367911d18cc856_1030789490000221889511549856] 
+[2023-02-10 05:30:47][pool-7-thread-6]delete key[orderCloseReport_changeReportDataLockKey_389ff0ef4f4e4a6b9dbf9c5ba2bb4e29_1030369750000221894809003602] 
+[2023-02-10 05:30:47][pool-7-thread-12]delete key[orderCloseReport_changeReportDataLockKey_8bfa08cf5160470e995737bea5d5a43e_1030599850000221897686281737] 
+[2023-02-10 05:30:47][pool-7-thread-2]delete key[orderCloseReport_changeReportDataLockKey_c6ed659667bc489dbcb9b5794dba98f3_1030320410000221895287120541] 
+[2023-02-10 05:30:47][pool-7-thread-1]delete key[orderCloseReport_changeReportDataLockKey_0fb4c8a82a9e4f23b6e1177b4246cca3_1030276560000221897644342675] 
+[2023-02-10 05:30:47][pool-7-thread-15]delete key[orderCloseReport_changeReportDataLockKey_8ec788be6f844a9a8bb505c56191939c_1030259280000221897795333062] 
+[2023-02-10 05:30:50][pool-7-thread-4]成功获取到key[orderCloseReport_changeReportDataLockKey_18087255df6d43dea92952234f89cc92_1030131710000221895337451551]锁 
+[2023-02-10 05:30:50][pool-7-thread-3]成功获取到key[orderCloseReport_changeReportDataLockKey_80af156cbc1c4b058f44927ba49d63ff_1030419070000221894989364080]锁 
+[2023-02-10 05:30:50][pool-7-thread-16]成功获取到key[orderCloseReport_changeReportDataLockKey_0a8ff645eb7b459bb52ebb89bc65e69c_1030960990000221889951950515]锁 
+[2023-02-10 05:30:50][pool-7-thread-6]成功获取到key[orderCloseReport_changeReportDataLockKey_7c5d20a442ef4764a97010f8f49d81eb_1030113370000221897950523125]锁 
+[2023-02-10 05:30:50][pool-7-thread-13]成功获取到key[orderCloseReport_changeReportDataLockKey_5081d4ba23464be38360ce2d6533d4a3_1030194320000221889993898140]锁 
+[2023-02-10 05:30:50][pool-7-thread-14]成功获取到key[orderCloseReport_changeReportDataLockKey_bd0c690b694149d395107358da5f13d3_1030975100000221894867724779]锁 
+[2023-02-10 05:30:50][pool-7-thread-1]成功获取到key[orderCloseReport_changeReportDataLockKey_ea6e526a3de344bcb2bdac5558bb9b56_1030976180000221889863869826]锁 
+[2023-02-10 05:30:50][pool-7-thread-5]成功获取到key[orderCloseReport_changeReportDataLockKey_3e390f1e96174e5a962ae60419fe07a0_1030433330000221894989363359]锁 
+[2023-02-10 05:30:50][pool-7-thread-8]delete key[orderCloseReport_changeReportDataLockKey_a8154304bf544d1fb300f4865b24f6eb_1030893400000221894989364016] 
+[2023-02-10 05:30:50][pool-7-thread-4]delete key[orderCloseReport_changeReportDataLockKey_18087255df6d43dea92952234f89cc92_1030131710000221895337451551] 
+[2023-02-10 05:30:50][pool-7-thread-1]delete key[orderCloseReport_changeReportDataLockKey_ea6e526a3de344bcb2bdac5558bb9b56_1030976180000221889863869826] 
+[2023-02-10 05:30:50][pool-7-thread-9]delete key[orderCloseReport_changeReportDataLockKey_7092dc278a934248be0701a280d547f8_1030180410000221895022917989] 
+[2023-02-10 05:30:50][pool-7-thread-10]delete key[orderCloseReport_changeReportDataLockKey_96ddd56220e749849de5339494532106_1030872510000221895249372834] 
+[2023-02-10 05:30:50][pool-7-thread-11]delete key[orderCloseReport_changeReportDataLockKey_672ddd6b14fb4b8398401ee1514c294e_1030929800000221895333265037] 
+[2023-02-10 05:30:50][pool-7-thread-3]delete key[orderCloseReport_changeReportDataLockKey_80af156cbc1c4b058f44927ba49d63ff_1030419070000221894989364080] 
+[2023-02-10 05:30:50][pool-7-thread-14]delete key[orderCloseReport_changeReportDataLockKey_bd0c690b694149d395107358da5f13d3_1030975100000221894867724779] 
+[2023-02-10 05:30:53][pool-7-thread-4]成功获取到key[orderCloseReport_changeReportDataLockKey_281c41f9eb78437e9754278f4a41831d_1030516800000221895152904438]锁 
+[2023-02-10 05:30:53][pool-7-thread-8]成功获取到key[orderCloseReport_changeReportDataLockKey_9cfc78ca6bf24e0f97806030b6089540_1030732610000221889876453669]锁 
+[2023-02-10 05:30:53][pool-7-thread-2]成功获取到key[orderCloseReport_changeReportDataLockKey_b78328ae739645a0bad282c9d4b558f2_1030951820000221889905819498]锁 
+[2023-02-10 05:30:53][pool-7-thread-12]成功获取到key[orderCloseReport_changeReportDataLockKey_4fe000f16c37428b84f3781c3bd5df28_1030183710000221889738039923]锁 
+[2023-02-10 05:30:53][pool-7-thread-1]成功获取到key[orderCloseReport_changeReportDataLockKey_d1b287c089a34d43ae530afd15ec1b90_1030847550000221897732415672]锁 
+[2023-02-10 05:30:53][pool-7-thread-14]成功获取到key[orderCloseReport_changeReportDataLockKey_00e6e234b26747e3b959d9fcd24ca19e_1030397100000221889863869644]锁 
+[2023-02-10 05:30:53][pool-7-thread-3]成功获取到key[orderCloseReport_changeReportDataLockKey_71c12dff7e9d4998b11ce58cd0157188_1030102150000221895337451567]锁 
+[2023-02-10 05:30:53][pool-7-thread-7]成功获取到key[orderCloseReport_changeReportDataLockKey_8f01614555e64a4e9045d4658d8851ba_1030910840000221894989363246]锁 
+      :  
+[2023-02-10 05:30:53][pool-7-thread-16]delete key[orderCloseReport_changeReportDataLockKey_0a8ff645eb7b459bb52ebb89bc65e69c_1030960990000221889951950515] 
+[2023-02-10 05:30:53][pool-7-thread-12]delete key[orderCloseReport_changeReportDataLockKey_4fe000f16c37428b84f3781c3bd5df28_1030183710000221889738039923] 
+      :  
+[2023-02-10 05:30:53][pool-7-thread-12]成功获取到key[orderCloseReport_changeReportDataLockKey_8b6933f32815436a88777948edc53f72_1030276150000221889738039750]锁 
+[2023-02-10 05:30:53][pool-7-thread-3]delete key[orderCloseReport_changeReportDataLockKey_71c12dff7e9d4998b11ce58cd0157188_1030102150000221895337451567] 
+[2023-02-10 05:30:53][pool-7-thread-13]delete key[orderCloseReport_changeReportDataLockKey_5081d4ba23464be38360ce2d6533d4a3_1030194320000221889993898140] 
+[2023-02-10 05:30:53][pool-7-thread-1]delete key[orderCloseReport_changeReportDataLockKey_d1b287c089a34d43ae530afd15ec1b90_1030847550000221897732415672] 
+[2023-02-10 05:30:53][pool-7-thread-8]delete key[orderCloseReport_changeReportDataLockKey_9cfc78ca6bf24e0f97806030b6089540_1030732610000221889876453669] 
+[2023-02-10 05:30:53][pool-7-thread-4]delete key[orderCloseReport_changeReportDataLockKey_281c41f9eb78437e9754278f4a41831d_1030516800000221895152904438] 
+[2023-02-10 05:30:53][pool-7-thread-5]delete key[orderCloseReport_changeReportDataLockKey_3e390f1e96174e5a962ae60419fe07a0_1030433330000221894989363359] 
+[2023-02-10 05:30:53][pool-7-thread-6]delete key[orderCloseReport_changeReportDataLockKey_7c5d20a442ef4764a97010f8f49d81eb_1030113370000221897950523125] 
+[2023-02-10 05:30:55][pool-7-thread-15]成功获取到key[orderCloseReport_changeReportDataLockKey_5239215a4c9c4e59b4c088601c771e71_1030892370000221894993523707]锁 
+[2023-02-10 05:30:55][pool-7-thread-16]成功获取到key[orderCloseReport_changeReportDataLockKey_b2bc4516fff6406d9b20aecec3735848_1030226280000221897686282421]锁 
+[2023-02-10 05:30:55][pool-7-thread-13]成功获取到key[orderCloseReport_changeReportDataLockKey_0d0be07dd23b43588361f7e1cea17fff_1030784180000221897782754974]锁 
+[2023-02-10 05:30:55][pool-7-thread-12]delete key[orderCloseReport_changeReportDataLockKey_8b6933f32815436a88777948edc53f72_1030276150000221889738039750] 
+[2023-02-10 05:30:55][pool-7-thread-14]delete key[orderCloseReport_changeReportDataLockKey_00e6e234b26747e3b959d9fcd24ca19e_1030397100000221889863869644] 
+      :  
+      :  
+[2023-02-10 05:30:55][pool-7-thread-7]delete key[orderCloseReport_changeReportDataLockKey_8f01614555e64a4e9045d4658d8851ba_1030910840000221894989363246] 
+[2023-02-10 05:30:55][pool-7-thread-2]delete key[orderCloseReport_changeReportDataLockKey_b78328ae739645a0bad282c9d4b558f2_1030951820000221889905819498] 
+[2023-02-10 05:30:58][pool-7-thread-3]成功获取到key[orderCloseReport_changeReportDataLockKey_79148c731e3144c9ab0af5d42894e1e2_1030747370000221889457021465]锁 
+[2023-02-10 05:30:58][pool-7-thread-11]成功获取到key[orderCloseReport_changeReportDataLockKey_c25a05c1cbfc4f92a8bad692533aa23d_1030728280000221889452831596]锁 
+[2023-02-10 05:30:58][pool-7-thread-9]成功获取到key[orderCloseReport_changeReportDataLockKey_a2108b61d774409aa5f3608223c43bb5_1030783720000221895240986204]锁 
+[2023-02-10 05:30:58][pool-7-thread-4]成功获取到key[orderCloseReport_changeReportDataLockKey_722ca5e1cf44480a8fcdec6e5394e5d7_1030148430000221894515401804]锁 
+[2023-02-10 05:30:58][pool-7-thread-12]成功获取到key[orderCloseReport_changeReportDataLockKey_560f8c5813fc489684e635c3e97c772c_1030581160000221897782755078]锁 
+[2023-02-10 05:30:58][pool-7-thread-16]delete key[orderCloseReport_changeReportDataLockKey_b2bc4516fff6406d9b20aecec3735848_1030226280000221897686282421] 
+[2023-02-10 05:30:58][pool-7-thread-9]delete key[orderCloseReport_changeReportDataLockKey_a2108b61d774409aa5f3608223c43bb5_1030783720000221895240986204] 
+[2023-02-10 05:30:58][pool-7-thread-6]成功获取到key[orderCloseReport_changeReportDataLockKey_44bbb44ac1784a55924194d9182f3063_1030930750000221895240985626]锁 
+[2023-02-10 05:30:58][pool-7-thread-15]delete key[orderCloseReport_changeReportDataLockKey_5239215a4c9c4e59b4c088601c771e71_1030892370000221894993523707] 
+[2023-02-10 05:30:58][pool-7-thread-4]delete key[orderCloseReport_changeReportDataLockKey_722ca5e1cf44480a8fcdec6e5394e5d7_1030148430000221894515401804] 
+[2023-02-10 05:30:58][pool-7-thread-13]delete key[orderCloseReport_changeReportDataLockKey_0d0be07dd23b43588361f7e1cea17fff_1030784180000221897782754974] 
+[2023-02-10 05:31:01][pool-7-thread-5]成功获取到key[orderCloseReport_changeReportDataLockKey_a9e0653abc0d46beb18d2f53cad6c4b4_1030570530000221897619170355]锁 
+[2023-02-10 05:31:01][pool-7-thread-1]成功获取到key[orderCloseReport_changeReportDataLockKey_9617edad5803440d9ed90ce3d88a5a44_1030886790000221894892892854]锁 
+[2023-02-10 05:31:01][pool-7-thread-16]成功获取到key[orderCloseReport_changeReportDataLockKey_ebff4fe482a64c8ba92a0baaccc13f5d_1030819940000221897732415703]锁 
+[2023-02-10 05:31:01][pool-7-thread-9]成功获取到key[orderCloseReport_changeReportDataLockKey_6639d82aa6604987ac655eabd074799b_1030260440000221897237493167]锁 
+[2023-02-10 05:31:01][pool-7-thread-14]成功获取到key[orderCloseReport_changeReportDataLockKey_e3d8494140c24c5595202a434b16e199_1030372790000221895501034195]锁 
+[2023-02-10 05:31:01][pool-7-thread-4]成功获取到key[orderCloseReport_changeReportDataLockKey_c2cd331d99af4797841f8cf4e91bccb5_1030914940000221894829973719]锁 
+[2023-02-10 05:31:01][pool-7-thread-8]成功获取到key[orderCloseReport_changeReportDataLockKey_23d34331ba344b1195f4a7f9f6b93dee_1030936850000221889461216997]锁 
+[2023-02-10 05:31:01][pool-7-thread-6]delete key[orderCloseReport_changeReportDataLockKey_44bbb44ac1784a55924194d9182f3063_1030930750000221895240985626] 
+[2023-02-10 05:31:01][pool-7-thread-10]成功获取到key[orderCloseReport_changeReportDataLockKey_d94cb27ba93443a6975d693c1ed6bd2b_1030439170000221894754482375]锁 
+[2023-02-10 05:31:01][pool-7-thread-6]成功获取到key[orderCloseReport_changeReportDataLockKey_13df22ad1b044749a58da7be2de19ef5_1030511090000221894934838525]锁 
+      :  
+[2023-02-10 05:31:01][pool-7-thread-12]delete key[orderCloseReport_changeReportDataLockKey_560f8c5813fc489684e635c3e97c772c_1030581160000221897782755078] 
+      :  
+[2023-02-10 05:31:01][pool-7-thread-9]delete key[orderCloseReport_changeReportDataLockKey_6639d82aa6604987ac655eabd074799b_1030260440000221897237493167] 
+[2023-02-10 05:31:01][pool-7-thread-12]成功获取到key[orderCloseReport_changeReportDataLockKey_cf4104c46cc5472e8a6d4a166f024ddd_1030543480000221889830320356]锁 
+[2023-02-10 05:31:01][pool-7-thread-3]delete key[orderCloseReport_changeReportDataLockKey_79148c731e3144c9ab0af5d42894e1e2_1030747370000221889457021465] 
+[2023-02-10 05:31:01][pool-7-thread-16]delete key[orderCloseReport_changeReportDataLockKey_ebff4fe482a64c8ba92a0baaccc13f5d_1030819940000221897732415703] 
+[2023-02-10 05:31:01][pool-7-thread-14]delete key[orderCloseReport_changeReportDataLockKey_e3d8494140c24c5595202a434b16e199_1030372790000221895501034195] 
+[2023-02-10 05:31:01][pool-7-thread-11]delete key[orderCloseReport_changeReportDataLockKey_c25a05c1cbfc4f92a8bad692533aa23d_1030728280000221889452831596] 
+[2023-02-10 05:31:03][pool-7-thread-7]成功获取到key[orderCloseReport_changeReportDataLockKey_2ae3e0c2eaca492a917d7bc89890d2e2_1030611380000221889993898211]锁 
+[2023-02-10 05:31:03][pool-7-thread-16]成功获取到key[orderCloseReport_changeReportDataLockKey_322e875696ea4ce1b128fe421b64deec_1030559090000221895173875075]锁 
+[2023-02-10 05:31:03][pool-7-thread-3]成功获取到key[orderCloseReport_changeReportDataLockKey_d7f467c511cd42cbb0f8cb98d1ebcb11_1030539510000221897644342763]锁 
+[2023-02-10 05:31:03][pool-7-thread-14]成功获取到key[orderCloseReport_changeReportDataLockKey_fd946b9a9d2b4e3cb47306279ef82d3e_1030437410000221894813196393]锁 
+[2023-02-10 05:31:03][pool-7-thread-4]delete key[orderCloseReport_changeReportDataLockKey_c2cd331d99af4797841f8cf4e91bccb5_1030914940000221894829973719] 
+[2023-02-10 05:31:03][pool-7-thread-6]delete key[orderCloseReport_changeReportDataLockKey_13df22ad1b044749a58da7be2de19ef5_1030511090000221894934838525] 
+[2023-02-10 05:31:03][pool-7-thread-10]delete key[orderCloseReport_changeReportDataLockKey_d94cb27ba93443a6975d693c1ed6bd2b_1030439170000221894754482375] 
+[2023-02-10 05:31:03][pool-7-thread-1]delete key[orderCloseReport_changeReportDataLockKey_9617edad5803440d9ed90ce3d88a5a44_1030886790000221894892892854] 
+[2023-02-10 05:31:03][pool-7-thread-8]delete key[orderCloseReport_changeReportDataLockKey_23d34331ba344b1195f4a7f9f6b93dee_1030936850000221889461216997] 
+[2023-02-10 05:31:03][pool-7-thread-12]delete key[orderCloseReport_changeReportDataLockKey_cf4104c46cc5472e8a6d4a166f024ddd_1030543480000221889830320356] 
+[2023-02-10 05:31:03][pool-7-thread-5]delete key[orderCloseReport_changeReportDataLockKey_a9e0653abc0d46beb18d2f53cad6c4b4_1030570530000221897619170355] 
+[2023-02-10 05:31:05][pool-7-thread-11]成功获取到key[orderCloseReport_changeReportDataLockKey_5a59f1c412b74c448d9f2370f9ecddf7_1030873140000221895152904467]锁 
+[2023-02-10 05:31:05][pool-7-thread-4]成功获取到key[orderCloseReport_changeReportDataLockKey_636648420eec433b8ff57b11c9768829_1030185220000221895488446572]锁 
+[2023-02-10 05:31:05][pool-7-thread-2]成功获取到key[orderCloseReport_changeReportDataLockKey_e8d4880edc4f4e589af761bb33305ad9_1030387400000221895157101683]锁 
+[2023-02-10 05:31:05][pool-7-thread-10]成功获取到key[orderCloseReport_changeReportDataLockKey_bc88d077924e442a93a11f3d8a639f1a_1030714920000221895287120740]锁 
+      :  
+      :  
+[2023-02-10 05:31:05][pool-7-thread-3]delete key[orderCloseReport_changeReportDataLockKey_d7f467c511cd42cbb0f8cb98d1ebcb11_1030539510000221897644342763] 
+[2023-02-10 05:31:05][pool-7-thread-11]delete key[orderCloseReport_changeReportDataLockKey_5a59f1c412b74c448d9f2370f9ecddf7_1030873140000221895152904467] 
+[2023-02-10 05:31:05][pool-7-thread-7]delete key[orderCloseReport_changeReportDataLockKey_2ae3e0c2eaca492a917d7bc89890d2e2_1030611380000221889993898211] 
+[2023-02-10 05:31:05][pool-7-thread-14]delete key[orderCloseReport_changeReportDataLockKey_fd946b9a9d2b4e3cb47306279ef82d3e_1030437410000221894813196393] 
+[2023-02-10 05:31:09][pool-7-thread-1]成功获取到key[orderCloseReport_changeReportDataLockKey_a58f30c5a84547cda6f55a3f50082ac8_1030807360000221894989363191]锁 
+[2023-02-10 05:31:09][pool-7-thread-13]成功获取到key[orderCloseReport_changeReportDataLockKey_5214f5c22e1d4bfb8a5a37e6ccd5d260_1030684430000221897732415725]锁 
+[2023-02-10 05:31:09][pool-7-thread-9]成功获取到key[orderCloseReport_changeReportDataLockKey_d0036dfda8544f358eb92347f9ed7a20_1030337800000221895240986232]锁 
+[2023-02-10 05:31:09][pool-7-thread-15]成功获取到key[orderCloseReport_changeReportDataLockKey_d8233de8c3bc4354ad027cdd0fe95013_1030554870000221895131970601]锁 
+[2023-02-10 05:31:09][pool-7-thread-3]成功获取到key[orderCloseReport_changeReportDataLockKey_4c33116321f64c0faec27c1ed534b035_1030306670000221895022918460]锁 
+[2023-02-10 05:31:09][pool-7-thread-16]delete key[orderCloseReport_changeReportDataLockKey_322e875696ea4ce1b128fe421b64deec_1030559090000221895173875075] 
+[2023-02-10 05:31:09][pool-7-thread-8]成功获取到key[orderCloseReport_changeReportDataLockKey_631a1ba706e24c0d8673a66c659ffd91_1030687390000221889993897750]锁 
+[2023-02-10 05:31:09][pool-7-thread-11]成功获取到key[orderCloseReport_changeReportDataLockKey_05f9f8f4f6484752b7213b5983e54fbf_1030647720000221895371013930]锁 
+[2023-02-10 05:31:09][pool-7-thread-9]delete key[orderCloseReport_changeReportDataLockKey_d0036dfda8544f358eb92347f9ed7a20_1030337800000221895240986232] 
+[2023-02-10 05:31:09][pool-7-thread-2]delete key[orderCloseReport_changeReportDataLockKey_e8d4880edc4f4e589af761bb33305ad9_1030387400000221895157101683] 
+[2023-02-10 05:31:09][pool-7-thread-13]delete key[orderCloseReport_changeReportDataLockKey_5214f5c22e1d4bfb8a5a37e6ccd5d260_1030684430000221897732415725] 
+[2023-02-10 05:31:09][pool-7-thread-10]delete key[orderCloseReport_changeReportDataLockKey_bc88d077924e442a93a11f3d8a639f1a_1030714920000221895287120740] 
+[2023-02-10 05:31:11][pool-7-thread-3]delete key[orderCloseReport_changeReportDataLockKey_4c33116321f64c0faec27c1ed534b035_1030306670000221895022918460] 
+[2023-02-10 05:31:11][pool-7-thread-6]成功获取到key[orderCloseReport_changeReportDataLockKey_294cfd21603e4488af249c98da9d91ed_1030113810000221890170053912]锁 
+[2023-02-10 05:31:11][pool-7-thread-9]成功获取到key[orderCloseReport_changeReportDataLockKey_732f95b999ff4201a8767014180931eb_1030461830000221889889035021]锁 
+[2023-02-10 05:31:11][pool-7-thread-2]成功获取到key[orderCloseReport_changeReportDataLockKey_2b39cc0ea57542998ef66e279696bd65_1030953580000221895501034217]锁 
+      :  
+      :  
+[2023-02-10 05:31:11][pool-7-thread-9]delete key[orderCloseReport_changeReportDataLockKey_732f95b999ff4201a8767014180931eb_1030461830000221889889035021] 
+[2023-02-10 05:31:11][pool-7-thread-4]delete key[orderCloseReport_changeReportDataLockKey_636648420eec433b8ff57b11c9768829_1030185220000221895488446572] 
+[2023-02-10 05:31:11][pool-7-thread-6]delete key[orderCloseReport_changeReportDataLockKey_294cfd21603e4488af249c98da9d91ed_1030113810000221890170053912] 
+[2023-02-10 05:31:13][pool-7-thread-13]成功获取到key[orderCloseReport_changeReportDataLockKey_1ca3a19cbce542738833d060193757ee_1030824800000221895501034230]锁 
+[2023-02-10 05:31:13][pool-7-thread-2]delete key[orderCloseReport_changeReportDataLockKey_2b39cc0ea57542998ef66e279696bd65_1030953580000221895501034217] 
+[2023-02-10 05:31:13][pool-7-thread-15]delete key[orderCloseReport_changeReportDataLockKey_d8233de8c3bc4354ad027cdd0fe95013_1030554870000221895131970601] 
+[2023-02-10 05:31:13][pool-7-thread-10]成功获取到key[orderCloseReport_changeReportDataLockKey_f9038ca659ad4a54a29c36d9a5c9de06_1030950130000221889842897535]锁 
+[2023-02-10 05:31:13][pool-7-thread-7]成功获取到key[orderCloseReport_changeReportDataLockKey_40a1e2bbff2347d4a15b89c85f7fe54d_1030364340000221897237493186]锁 
+[2023-02-10 05:31:13][pool-7-thread-3]成功获取到key[orderCloseReport_changeReportDataLockKey_05ad9cb7e71e4c8886a8cd3b3f2877b6_1030795770000221895333265199]锁 
+[2023-02-10 05:31:13][pool-7-thread-1]delete key[orderCloseReport_changeReportDataLockKey_a58f30c5a84547cda6f55a3f50082ac8_1030807360000221894989363191] 
+[2023-02-10 05:31:13][pool-7-thread-9]成功获取到key[orderCloseReport_changeReportDataLockKey_43f89dead1ac4301a4e15bca776e6ae6_1030470340000221897237493210]锁 
+[2023-02-10 05:31:13][pool-7-thread-13]delete key[orderCloseReport_changeReportDataLockKey_1ca3a19cbce542738833d060193757ee_1030824800000221895501034230] 
+[2023-02-10 05:31:13][pool-7-thread-8]delete key[orderCloseReport_changeReportDataLockKey_631a1ba706e24c0d8673a66c659ffd91_1030687390000221889993897750] 
+[2023-02-10 05:31:13][pool-7-thread-9]delete key[orderCloseReport_changeReportDataLockKey_43f89dead1ac4301a4e15bca776e6ae6_1030470340000221897237493210] 
+[2023-02-10 05:31:13][pool-7-thread-7]delete key[orderCloseReport_changeReportDataLockKey_40a1e2bbff2347d4a15b89c85f7fe54d_1030364340000221897237493186] 
+[2023-02-10 05:31:15][pool-7-thread-13]成功获取到key[orderCloseReport_changeReportDataLockKey_6ca57a3492fa4a2785f184c6b542de88_1030690230000221897786941587]锁 
+[2023-02-10 05:31:15][pool-7-thread-5]成功获取到key[orderCloseReport_changeReportDataLockKey_4b718c83a1f04cb8b45b948eccdac702_1030150330000221895249373106]锁 
+[2023-02-10 05:31:15][pool-7-thread-12]成功获取到key[orderCloseReport_changeReportDataLockKey_59ee379dd56e4e56b2e30d91efaa3d80_1030247290000221895131970707]锁 
+[2023-02-10 05:31:15][pool-7-thread-2]成功获取到key[orderCloseReport_changeReportDataLockKey_a294045638624800868a30289b0c2397_1030952730000221894989364297]锁 
+      :  
+      :  
+[2023-02-10 05:31:15][pool-7-thread-11]delete key[orderCloseReport_changeReportDataLockKey_05f9f8f4f6484752b7213b5983e54fbf_1030647720000221895371013930] 
+[2023-02-10 05:31:15][pool-7-thread-10]delete key[orderCloseReport_changeReportDataLockKey_f9038ca659ad4a54a29c36d9a5c9de06_1030950130000221889842897535] 
+[2023-02-10 05:31:18][pool-7-thread-3]delete key[orderCloseReport_changeReportDataLockKey_05ad9cb7e71e4c8886a8cd3b3f2877b6_1030795770000221895333265199] 
+[2023-02-10 05:31:18][pool-7-thread-5]delete key[orderCloseReport_changeReportDataLockKey_4b718c83a1f04cb8b45b948eccdac702_1030150330000221895249373106] 
+[2023-02-10 05:31:18][pool-7-thread-2]delete key[orderCloseReport_changeReportDataLockKey_a294045638624800868a30289b0c2397_1030952730000221894989364297] 
+[2023-02-10 05:31:18][pool-7-thread-7]成功获取到key[orderCloseReport_changeReportDataLockKey_c9d0b1a6e5e64cf39b193613ac16a61a_1030456630000221895228400165]锁 
+[2023-02-10 05:31:18][pool-7-thread-9]成功获取到key[orderCloseReport_changeReportDataLockKey_e0724e3be6ef43a09ca751c8de29efe4_1030875040000221889813540131]锁 
+[2023-02-10 05:31:18][pool-7-thread-3]成功获取到key[orderCloseReport_changeReportDataLockKey_b1ec710dd8944d559151cb04e97aac6b_1030299800000221890170053932]锁 
+[2023-02-10 05:31:18][pool-7-thread-5]成功获取到key[orderCloseReport_changeReportDataLockKey_cc4aa08ae7d34506b3116d6044965537_1030636080000221890115526790]锁 
+[2023-02-10 05:31:18][pool-7-thread-6]成功获取到key[orderCloseReport_changeReportDataLockKey_cb1d3a42047c42fb87507808237b092e_1030997280000221897933743525]锁 
+[2023-02-10 05:31:18][pool-7-thread-2]成功获取到key[orderCloseReport_changeReportDataLockKey_6048178bd8da4657b4ec5e00524a9522_1030169310000221894892893074]锁 
+[2023-02-10 05:31:20][pool-7-thread-10]成功获取到key[orderCloseReport_changeReportDataLockKey_90f190fb559f44389d655884f2fd984a_1030196560000221895131971144]锁 
+[2023-02-10 05:31:20][pool-7-thread-16]成功获取到key[orderCloseReport_changeReportDataLockKey_89c3de7fa5e840f298df4a77981cde75_1030657830000221895371013421]锁 
+[2023-02-10 05:31:20][pool-7-thread-7]delete key[orderCloseReport_changeReportDataLockKey_c9d0b1a6e5e64cf39b193613ac16a61a_1030456630000221895228400165] 
+[2023-02-10 05:31:20][pool-7-thread-5]delete key[orderCloseReport_changeReportDataLockKey_cc4aa08ae7d34506b3116d6044965537_1030636080000221890115526790] 
+[2023-02-10 05:31:22][pool-7-thread-5]成功获取到key[orderCloseReport_changeReportDataLockKey_39270132787c4adab0f9e1c0e44c76dc_1030146460000221895459087561]锁 
+[2023-02-10 05:31:22][pool-7-thread-2]delete key[orderCloseReport_changeReportDataLockKey_6048178bd8da4657b4ec5e00524a9522_1030169310000221894892893074] 
+[2023-02-10 05:31:22][pool-7-thread-3]delete key[orderCloseReport_changeReportDataLockKey_b1ec710dd8944d559151cb04e97aac6b_1030299800000221890170053932] 
+[2023-02-10 05:31:22][pool-7-thread-7]成功获取到key[orderCloseReport_changeReportDataLockKey_abae98afb52d47cba10c2be4c5285fa7_1030838880000221889863869859]锁 
+[2023-02-10 05:31:22][pool-7-thread-14]成功获取到key[orderCloseReport_changeReportDataLockKey_e317f781ef7046768528e7bab7b286fb_1030770730000221895228399870]锁 
+[2023-02-10 05:31:22][pool-7-thread-10]delete key[orderCloseReport_changeReportDataLockKey_90f190fb559f44389d655884f2fd984a_1030196560000221895131971144] 
+[2023-02-10 05:31:22][pool-7-thread-2]成功获取到key[orderCloseReport_changeReportDataLockKey_fa5d02395f214bfa8a84c069d6a01445_1030771060000221894754482392]锁 
+[2023-02-10 05:31:22][pool-7-thread-3]成功获取到key[orderCloseReport_changeReportDataLockKey_e285b317e897496f925cc001b6c20579_1030727540000221894809010088]锁 
+[2023-02-10 05:31:22][pool-7-thread-10]成功获取到key[orderCloseReport_changeReportDataLockKey_4807c4e6a1df445d9571747ab9e826b7_1030880380000221889738040020]锁 
+[2023-02-10 05:31:23][pool-7-thread-7]delete key[orderCloseReport_changeReportDataLockKey_abae98afb52d47cba10c2be4c5285fa7_1030838880000221889863869859] 
+      :  
+      :  
+[2023-02-10 05:31:23][pool-7-thread-7]成功获取到key[orderCloseReport_changeReportDataLockKey_23750ea8d0c94f019b96e78b751d806a_1030161390000221889830320518]锁 
+[2023-02-10 05:31:25][pool-7-thread-12]delete key[orderCloseReport_changeReportDataLockKey_59ee379dd56e4e56b2e30d91efaa3d80_1030247290000221895131970707] 
+      :  
+[2023-02-10 05:31:25][pool-7-thread-13]delete key[orderCloseReport_changeReportDataLockKey_6ca57a3492fa4a2785f184c6b542de88_1030690230000221897786941587] 
+[2023-02-10 05:31:25][pool-7-thread-10]delete key[orderCloseReport_changeReportDataLockKey_4807c4e6a1df445d9571747ab9e826b7_1030880380000221889738040020] 
+      :  
+[2023-02-10 05:31:27][pool-7-thread-15]成功获取到key[orderCloseReport_changeReportDataLockKey_1cd71ba1251e49b78314e4a7f62eb6ff_1030959690000221890115526759]锁 
+[2023-02-10 05:31:27][pool-7-thread-10]成功获取到key[orderCloseReport_changeReportDataLockKey_cc7e487694fa4e7e988e5ddf3e4587a0_1030766570000221894515401845]锁 
+[2023-02-10 05:31:27][pool-7-thread-9]delete key[orderCloseReport_changeReportDataLockKey_e0724e3be6ef43a09ca751c8de29efe4_1030875040000221889813540131] 
+[2023-02-10 05:31:27][pool-7-thread-16]delete key[orderCloseReport_changeReportDataLockKey_89c3de7fa5e840f298df4a77981cde75_1030657830000221895371013421] 
+[2023-02-10 05:31:27][pool-7-thread-1]成功获取到key[orderCloseReport_changeReportDataLockKey_69122ea98ed64ed28891f14f3f2c168e_1030707770000221895022918475]锁 
+[2023-02-10 05:31:29][pool-7-thread-7]delete key[orderCloseReport_changeReportDataLockKey_23750ea8d0c94f019b96e78b751d806a_1030161390000221889830320518] 
+[2023-02-10 05:31:29][pool-7-thread-5]delete key[orderCloseReport_changeReportDataLockKey_39270132787c4adab0f9e1c0e44c76dc_1030146460000221895459087561] 
+[2023-02-10 05:31:29][pool-7-thread-4]成功获取到key[orderCloseReport_changeReportDataLockKey_efc1d8a4838b4739a61822971fda20a0_1030752880000221889993897472]锁 
+[2023-02-10 05:31:29][pool-7-thread-6]delete key[orderCloseReport_changeReportDataLockKey_cb1d3a42047c42fb87507808237b092e_1030997280000221897933743525] 
+[2023-02-10 05:31:29][pool-7-thread-15]delete key[orderCloseReport_changeReportDataLockKey_1cd71ba1251e49b78314e4a7f62eb6ff_1030959690000221890115526759] 
+[2023-02-10 05:31:32][pool-7-thread-15]成功获取到key[orderCloseReport_changeReportDataLockKey_3506a27fbe0d41efac61b741d1eccfac_1030793160000221897602396640]锁 
+[2023-02-10 05:31:32][pool-7-thread-1]delete key[orderCloseReport_changeReportDataLockKey_69122ea98ed64ed28891f14f3f2c168e_1030707770000221895022918475] 
+[2023-02-10 05:31:32][pool-7-thread-14]delete key[orderCloseReport_changeReportDataLockKey_e317f781ef7046768528e7bab7b286fb_1030770730000221895228399870] 
+[2023-02-10 05:31:32][pool-7-thread-2]delete key[orderCloseReport_changeReportDataLockKey_fa5d02395f214bfa8a84c069d6a01445_1030771060000221894754482392] 
+[2023-02-10 05:31:33][pool-7-thread-1]成功获取到key[orderCloseReport_changeReportDataLockKey_afcadfbdbe0246e5b973c89a043f4a5a_1030600920000221894934838654]锁 
+[2023-02-10 05:31:33][pool-7-thread-8]成功获取到key[orderCloseReport_changeReportDataLockKey_751ae6077508494f8e012448f265bfbe_1030627930000221894989363201]锁 
+[2023-02-10 05:31:35][pool-7-thread-10]delete key[orderCloseReport_changeReportDataLockKey_cc7e487694fa4e7e988e5ddf3e4587a0_1030766570000221894515401845] 
+      :  
+[2023-02-10 05:31:35][pool-7-thread-7]成功获取到key[orderCloseReport_changeReportDataLockKey_ce6e73229e574aaf9717af7503b7d51d_1030764650000221890170053946]锁 
+[2023-02-10 05:31:35][pool-7-thread-10]成功获取到key[orderCloseReport_changeReportDataLockKey_c4f0a7bae02b4fa98b7f51b6170101d0_1030774530000221890115526815]锁 
+      :  
+[2023-02-10 05:31:37][pool-7-thread-15]delete key[orderCloseReport_changeReportDataLockKey_3506a27fbe0d41efac61b741d1eccfac_1030793160000221897602396640] 
+[2023-02-10 05:31:37][SimpleAsyncTaskExecutor-30147215]delete key[regenerate_business_range_new_key_3230281] 
+[2023-02-10 05:31:37][SimpleAsyncTaskExecutor-30147215]成功获取到key[regenerate_business_range_new_key_1990377]锁 
+      :  
+[2023-02-10 05:31:37][pool-7-thread-11]成功获取到key[orderCloseReport_changeReportDataLockKey_a0295860884a47e198cd46555a204511_1030555970000221894989364347]锁 
+      :  
+[2023-02-10 05:31:41][pool-7-thread-15]成功获取到key[orderCloseReport_changeReportDataLockKey_0c6ec2a1f38f4bad816a48dd98dbfcb1_1030997010000221897594008892]锁 
+[2023-02-10 05:31:43][pool-7-thread-10]delete key[orderCloseReport_changeReportDataLockKey_c4f0a7bae02b4fa98b7f51b6170101d0_1030774530000221890115526815] 
+[2023-02-10 05:31:43][pool-7-thread-7]delete key[orderCloseReport_changeReportDataLockKey_ce6e73229e574aaf9717af7503b7d51d_1030764650000221890170053946] 
+[2023-02-10 05:31:43][pool-7-thread-3]delete key[orderCloseReport_changeReportDataLockKey_e285b317e897496f925cc001b6c20579_1030727540000221894809010088] 
+[2023-02-10 05:31:46][pool-7-thread-7]成功获取到key[orderCloseReport_changeReportDataLockKey_0609fe6532834a5088c9d251d66695d0_1030825770000221889847091569]锁 
+[2023-02-10 05:31:46][pool-7-thread-11]delete key[orderCloseReport_changeReportDataLockKey_a0295860884a47e198cd46555a204511_1030555970000221894989364347] 
+[2023-02-10 05:31:46][pool-7-thread-10]成功获取到key[orderCloseReport_changeReportDataLockKey_44f41e7cc76440de9bd75a2d0596949c_1030177790000221890115526826]锁 
+      :  
+[2023-02-10 05:31:53][pool-7-thread-11]成功获取到key[orderCloseReport_changeReportDataLockKey_6881ba808b3b4722b071b69567641459_1030735280000221889817731773]锁 
+      :  
+[2023-02-10 05:32:01][pool-7-thread-7]delete key[orderCloseReport_changeReportDataLockKey_0609fe6532834a5088c9d251d66695d0_1030825770000221889847091569] 
+      :  
+      :  
+      :  
+      :  
+      :  
+      :  
+      :  
+      :  
+      :  
+      :  
+      :  
+[2023-02-10 05:32:06][http-nio-8080-exec-41]成功获取到key[irms_framework_taskCacheKey_generateExtExceptionMonitor_false]锁 
+      :  
+[2023-02-10 05:32:09][pool-7-thread-1]delete key[orderCloseReport_changeReportDataLockKey_afcadfbdbe0246e5b973c89a043f4a5a_1030600920000221894934838654] 
+[2023-02-10 05:32:16][http-nio-8080-exec-41]delete key[irms_framework_taskCacheKey_generateExtExceptionMonitor_false] 
+[2023-02-10 05:32:25][http-nio-8080-exec-94]成功获取到key[irms_framework_taskCacheKey_checkReportExport_false]锁 
+      :  
+      :  
+      :  
+      :  
+[2023-02-10 05:32:37][pool-7-thread-7]成功获取到key[orderCloseReport_changeReportDataLockKey_f27efb626733476cbeac6440871256dc_1030941910000221895178068256]锁 
+[2023-02-10 05:32:41][http-nio-8080-exec-94]delete key[irms_framework_taskCacheKey_checkReportExport_false] 
+      :  
+      :  
+      :  
+      :  
+      :  
+      :  
+      :  
+      :  
+      :  
+      :  
+      :  
+      :  
+      :  
+      :  
+      :  
+      :  
+      :  
+java.util.concurrent.TimeoutException: null 
+	at java.util.concurrent.FutureTask.get(FutureTask.java:205) 
+	at com.netflix.discovery.TimedSupervisorTask.run(TimedSupervisorTask.java:63) 
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) 
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) 
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180) 
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293) 
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) 
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) 
+	at java.lang.Thread.run(Thread.java:748) 
+      :  
+      :  
+      :  
+      :  
+      :  
+      :  
+      :  
+      :  
+      :  
+ 
+The last packet successfully received from the server was 12,242 milliseconds ago.  The last packet sent successfully to the server was 0 milliseconds ago. 
+      :  
+      :  
+      :  
+      :  
+      :  
+      :  
+      :  
+      :  
+java.util.concurrent.TimeoutException: null 
+	at java.util.concurrent.FutureTask.get(FutureTask.java:205) 
+	at com.netflix.discovery.TimedSupervisorTask.run(TimedSupervisorTask.java:63) 
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) 
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) 
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180) 
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293) 
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) 
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) 
+	at java.lang.Thread.run(Thread.java:748) 
+      :  
+      :  
+      :  
+      :  
+      :  
+      :  
+      :  
+      :  
+      :  
+      :  
+      :  
+=====异常通知开始===== 
+异常代码:org.springframework.transaction.CannotCreateTransactionException 
+异常信息:Could not open JPA EntityManager for transaction; nested exception is javax.persistence.PersistenceException: org.hibernate.exception.JDBCConnectionException: Unable to acquire JDBC Connection 
+异常方法:com.sun.proxy.$Proxy187.save() 
+请求参数:com.candao.irms.report.api.bean.ReportOrderKpi@316d3ce6, 
+[2023-02-10 05:33:57][pool-7-thread-10]delete key[orderCloseReport_changeReportDataLockKey_44f41e7cc76440de9bd75a2d0596949c_1030177790000221890115526826] 
+      :  
+      :  
+      :  
+      :  
+      :  
+%22namespaceName%22%3A%22externalHubConfig%22%2C%22notificationId%22%3A1163%7D%2C%7B%22namespaceName%22%3A%22reportPushQueryDataConfig%22%2C%22notificationId%22%3A758%7D%2C%7B%22namespaceName%22%3A%22o2oComponentConfig%22%2C%22notificationId%22%3A787%7D%2C%7B%22namespaceName%22%3A%22orderCloseConfig%22%2C%22notificationId%22%3A671%7D%2C%7B%22namespaceName%22%3A%22storeProductionTimeConfig%22%2C%22notificationId%22%3A982%7D%2C%7B%22namespaceName%22%3A%22externalDcConfig%22%2C%22notificationId%22%3A942%7D%2C%7B%22namespaceName%22%3A%22riderCompanyConfig%22%2C%22notificationId%22%3A836%7D%2C%7B%22namespaceName%22%3A%22storeLoadValueConfig%22%2C%22notificationId%22%3A1164%7D%2C%7B%22namespaceName%22%3A%22irms.systemConfig%22%2C%22notificationId%22%3A108%7D%2C%7B%22namespaceName%22%3A%22application%22%2C%22notificationId%22%3A413%7D%2C%7B%22namespaceName%22%3A%22businessRangeConfig%22%2C%22notificationId%22%3A897%7D%2C%7B%22namespaceName%22%3A%22moJiApolloConfig%22%2C%22notificationId%22%3A680%7D%5D, reason: Could not complete get operation [Cause: Read timed out] 
+      :  
+      :  
+      :  
+      :  
+      :  
+java.lang.OutOfMemoryError: GC overhead limit exceeded 
+Dumping heap to /data/irms-log-new/report-service/java_pid6.hprof ... 
+Heap dump file created [6118249998 bytes in 21.404 secs] 
+Exception in thread "http-nio-8081-exec-29" java.lang.OutOfMemoryError: GC overhead limit exceeded 
+=====异常通知开始===== 
+异常代码:org.springframework.transaction.CannotCreateTransactionException 
+Exception in thread "NFLoadBalancer-PingTimer-authority-service" java.lang.OutOfMemoryError: GC overhead limit exceeded 
+Exception in thread "http-nio-8081-exec-16" java.lang.OutOfMemoryError: GC overhead limit exceeded 
+      :  
+      :  
+Exception in thread "http-nio-8080-exec-24" java.lang.OutOfMemoryError: GC overhead limit exceeded 
+异常信息:Could not open JPA EntityManager for transaction; nested exception is java.lang.OutOfMemoryError: GC overhead limit exceeded 
+Exception in thread "http-nio-8080-exec-141" Exception in thread "http-nio-8080-exec-136" java.lang.OutOfMemoryError: GC overhead limit exceeded 
+异常方法:com.sun.proxy.$Proxy187.save() 
+[2023-02-10 05:36:51][pool-7-thread-10]成功获取到key[orderCloseReport_changeReportDataLockKey_9a64652533a545e79c7e171c193f8b61_1030320270000221894859334870]锁 
+java.lang.OutOfMemoryError: GC overhead limit exceeded 
+请求参数:com.candao.irms.report.api.bean.ReportOrderKpi@52442ea0, 
+      :  
+      :  
+Exception in thread "http-nio-8081-Acceptor-0" java.lang.OutOfMemoryError: GC overhead limit exceeded 
+      :  
+      :  
+      :  
+Exception in thread "http-nio-8080-exec-122" java.lang.OutOfMemoryError: GC overhead limit exceeded 
+      :  
+      :  
+      :  
+      :  
+Exception in thread "http-nio-8081-exec-47" java.lang.OutOfMemoryError: GC overhead limit exceeded 
+Exception in thread "Tomcat JDBC Pool Cleaner[1309552426:1675237777210]" java.lang.OutOfMemoryError: GC overhead limit exceeded 
+Exception in thread "http-nio-8080-Acceptor-0" java.lang.OutOfMemoryError: GC overhead limit exceeded 
+Exception in thread "http-nio-8081-ClientPoller-1" java.lang.OutOfMemoryError: GC overhead limit exceeded 
+Exception in thread "RxIoScheduler-1 (Evictor)" java.lang.OutOfMemoryError: GC overhead limit exceeded 
+Exception in thread "http-nio-8080-exec-208" java.lang.OutOfMemoryError: GC overhead limit exceeded 
+      :  
+      :  
+      :  
+      :  
+      :  
+      :  
+      :  
+      :  
+      :  
+java.lang.OutOfMemoryError: GC overhead limit exceeded 
+      :  
+[2023-02-10 05:42:44][pool-7-thread-7]delete key[orderCloseReport_changeReportDataLockKey_f27efb626733476cbeac6440871256dc_1030941910000221895178068256] 
+      :  
+      :  
+      :  
+      :  
+      :  
+      :  
+      :  
+Exception in thread "http-nio-8080-exec-40" java.lang.OutOfMemoryError: GC overhead limit exceeded 
+      :  
+      :  
+[2023-02-10 05:43:06][http-nio-8080-exec-53]成功获取到key[range_Sync_Lock_3390087_1_18]锁 
