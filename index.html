@@ -179,7 +179,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-04-02 18:20:42" itemprop="dateModified" datetime="2024-04-02T18:20:42+08:00">2024-04-02</time>
+      <time title="Modified: 2024-04-02 18:47:48" itemprop="dateModified" datetime="2024-04-02T18:47:48+08:00">2024-04-02</time>
     </span>
 
   
@@ -192,12 +192,12 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="Java多模块依赖混淆调研"><a href="#Java多模块依赖混淆调研" class="headerlink" title="Java多模块依赖混淆调研"></a>Java多模块依赖混淆调研</h1><p>这里先说一下场景</p>
+          <h1 id="Java多模块依赖混淆调研"><a href="#Java多模块依赖混淆调研" class="headerlink" title="Java多模块依赖混淆调研"></a>Java多模块依赖混淆调研</h1><h2 id="需求背景"><a href="#需求背景" class="headerlink" title="需求背景"></a>需求背景</h2><p>这里先说一下场景</p>
 <blockquote>
 <p> 公司和甲方签的合同 , 做一款程序,并且维护3年后,甲方可获得项目源码<br>但现在甲方很聪明,不想付维护的钱,但合同里又拥有项目源码的产权<br>现在甲方’违约’ 不想出维护的费用,但项目的钱已经付了,我们还是要给出源码<br>因为我们项目中有部分代码是公司自有产权,并不想直接连这部分一起直接给甲方,于是老板就想我们把这部分代码加密后给甲方,不让甲方获得这部分代码<br>众所周知 java是一款一处编译处处运行的编程语言,编译成class文件后可以让虚拟机识别,但也让反编译工具 十分容易获得其’源码’<br>也就是说我们会提供甲方 <strong>业务代码 源码 和 一些基础依赖的几个jar包</strong></p>
 </blockquote>
 <p>而业务源码都会依赖于 那些基础jar</p>
-<p>目前想到了以下三种方案:</p>
+<h2 id="方案思路"><a href="#方案思路" class="headerlink" title="方案思路"></a>方案思路</h2><p>目前想到了以下三种方案:</p>
 <ol>
 <li><p>使用市面上的混淆工具,生成混淆后的jar提供给对方</p>
 <blockquote>
@@ -238,7 +238,7 @@
 </li>
 </ol>
 <p><img src="/Untitled.png" alt="Untitled"></p>
-<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><ul>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ul>
 <li>proguard 官网地址</li>
 </ul>
 <p><a target="_blank" rel="noopener" href="https://www.guardsquare.com/manual/quickstart#maven-project">https://www.guardsquare.com/manual/quickstart#maven-project</a></p>
