@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.hongker.org","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="并发场景下的设计模式Immutability模式，利用不变解决并发问题不变模式,对应java中的final关键字 实现一个具备不可变性的类，还是挺简单的。将一个类所有的属性都设置成 final 的，并且只允许存在只读方法，那么这个类基本上就具备不可变性了。更严格的做法是这个类本身也是 final 的，也就是不允许继承。因为子类可以覆盖父类的方法，有可能改变不可变性，所以推荐你在实际工作中，使用这种">
+<meta property="og:type" content="article">
+<meta property="og:title" content="并发场景下的设计模式">
+<meta property="og:url" content="http://blog.hongker.org/2024/04/01/%E5%B7%B2%E5%8F%91%E5%B8%83/%E5%B9%B6%E5%8F%91%E5%9C%BA%E6%99%AF%E4%B8%8B%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.html">
+<meta property="og:site_name" content="泽仁&#39;s Blogs">
+<meta property="og:description" content="并发场景下的设计模式Immutability模式，利用不变解决并发问题不变模式,对应java中的final关键字 实现一个具备不可变性的类，还是挺简单的。将一个类所有的属性都设置成 final 的，并且只允许存在只读方法，那么这个类基本上就具备不可变性了。更严格的做法是这个类本身也是 final 的，也就是不允许继承。因为子类可以覆盖父类的方法，有可能改变不可变性，所以推荐你在实际工作中，使用这种">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-04-01T13:57:24.926Z">
+<meta property="article:modified_time" content="2020-08-10T13:54:12.000Z">
+<meta property="article:author" content="Link Sun">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://blog.hongker.org/2024/04/01/%E5%B7%B2%E5%8F%91%E5%B8%83/%E5%B9%B6%E5%8F%91%E5%9C%BA%E6%99%AF%E4%B8%8B%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://blog.hongker.org/2024/04/01/%E5%B7%B2%E5%8F%91%E5%B8%83/%E5%B9%B6%E5%8F%91%E5%9C%BA%E6%99%AF%E4%B8%8B%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/","path":"2024/04/01/已发布/并发场景下的设计模式/","title":"并发场景下的设计模式"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>并发场景下的设计模式 | 泽仁's Blogs</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">泽仁's Blogs</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%B6%E5%8F%91%E5%9C%BA%E6%99%AF%E4%B8%8B%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">并发场景下的设计模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Immutability%E6%A8%A1%E5%BC%8F%EF%BC%8C%E5%88%A9%E7%94%A8%E4%B8%8D%E5%8F%98%E8%A7%A3%E5%86%B3%E5%B9%B6%E5%8F%91%E9%97%AE%E9%A2%98"><span class="nav-number">1.1.</span> <span class="nav-text">Immutability模式，利用不变解决并发问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Copy-on-Write%E6%A8%A1%E5%BC%8F%EF%BC%9A%E4%B8%8D%E6%98%AF%E5%BB%B6%E6%97%B6%E7%AD%96%E7%95%A5%E7%9A%84COW"><span class="nav-number">1.2.</span> <span class="nav-text">Copy-on-Write模式：不是延时策略的COW</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.3.</span> <span class="nav-text">线程本地存储模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Guarded-Suspension%E6%A8%A1%E5%BC%8F-%E5%90%88%E9%80%82%E7%9A%84%E6%9A%82%E5%81%9C"><span class="nav-number">1.4.</span> <span class="nav-text">Guarded Suspension模式:合适的暂停</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Thread-Per-Message"><span class="nav-number">1.5.</span> <span class="nav-text">Thread-Per-Message</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BD%BB%E9%87%8F%E7%BA%A7%E7%BA%BF%E7%A8%8B"><span class="nav-number">1.5.1.</span> <span class="nav-text">轻量级线程:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Worker-Thread-%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.6.</span> <span class="nav-text">Worker Thread 模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%A4%E9%98%B6%E6%AE%B5%E7%BB%88%E6%AD%A2%E6%A8%A1%E5%BC%8F-%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E7%9A%84%E7%BB%88%E6%AD%A2%E7%BA%BF%E7%A8%8B"><span class="nav-number">1.7.</span> <span class="nav-text">两阶段终止模式:如何优雅的终止线程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E7%9A%84%E4%B8%AD%E6%96%AD%E7%BA%BF%E7%A8%8B"><span class="nav-number">1.7.1.</span> <span class="nav-text">如何优雅的中断线程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E5%9C%B0%E7%BB%88%E6%AD%A2%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="nav-number">1.7.2.</span> <span class="nav-text">如何优雅地终止线程池</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Link Sun</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://blog.hongker.org/2024/04/01/%E5%B7%B2%E5%8F%91%E5%B8%83/%E5%B9%B6%E5%8F%91%E5%9C%BA%E6%99%AF%E4%B8%8B%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Link Sun">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泽仁's Blogs">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="并发场景下的设计模式 | 泽仁's Blogs">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          并发场景下的设计模式
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-04-01 21:57:24" itemprop="dateCreated datePublished" datetime="2024-04-01T21:57:24+08:00">2024-04-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2020-08-10 21:54:12" itemprop="dateModified" datetime="2020-08-10T21:54:12+08:00">2020-08-10</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="并发场景下的设计模式"><a href="#并发场景下的设计模式" class="headerlink" title="并发场景下的设计模式"></a>并发场景下的设计模式</h2><h3 id="Immutability模式，利用不变解决并发问题"><a href="#Immutability模式，利用不变解决并发问题" class="headerlink" title="Immutability模式，利用不变解决并发问题"></a>Immutability模式，利用不变解决并发问题</h3><p><strong>不变模式,对应java中的final关键字</strong></p>
+<p>实现一个具备不可变性的类，还是挺简单的。将一个类所有的属性都设置成 final 的，并且只允许存在只读方法，那么这个类基本上就具备不可变性了。更严格的做法是这个类本身也是 final 的，也就是不允许继承。因为子类可以覆盖父类的方法，有可能改变不可变性，所以推荐你在实际工作中，使用这种更严格的做法。</p>
+<blockquote>
+<p><strong>需要注意对象属性的不可变性</strong></p>
+</blockquote>
+<h3 id="Copy-on-Write模式：不是延时策略的COW"><a href="#Copy-on-Write模式：不是延时策略的COW" class="headerlink" title="Copy-on-Write模式：不是延时策略的COW"></a>Copy-on-Write模式：不是延时策略的COW</h3><p>Copy-on-Write 方法。所谓 Copy-on-Write，经常被缩写为 COW 或者 CoW，顾名思义就是<strong>写时复制</strong>。</p>
+<p>java常见实现为:<br>CopyOnWriteArrayList<br>CopyOnWriteArraySet</p>
+<p>适用于读多写少的场景，并且允许短暂的不一致性</p>
+<blockquote>
+<p><strong>需要注意性能问题，如CopyOnWrite的对象过大，则拷贝过程会非常消耗性能</strong></p>
+</blockquote>
+<h3 id="线程本地存储模式"><a href="#线程本地存储模式" class="headerlink" title="线程本地存储模式"></a>线程本地存储模式</h3><p>对应使用java中的ThreadLocal</p>
+<blockquote>
+<p><strong>需要注意异步执行问题:即如果存在异步编程则ThreadLocal的对象也是不同的</strong><br>如: spring中的事务管理，是基于ThreadLocal的，如果此时使用异步执行sql(新建一个线程去跑其他sql)<br>如果新建的线程报错了。则主线程里的事务并不会回滚</p>
+</blockquote>
+<h3 id="Guarded-Suspension模式-合适的暂停"><a href="#Guarded-Suspension模式-合适的暂停" class="headerlink" title="Guarded Suspension模式:合适的暂停"></a>Guarded Suspension模式:合适的暂停</h3><p>Guarded Suspension，直译过来就是“保护性地暂停”<br>Guarded Suspension 模式本质上是一种<strong>等待唤醒机制的实现</strong>，只不过 Guarded Suspension 模式将其规范化了。</p>
+<p>如在http远程调用下，http调用其实是异步的，但代码实现sdk都帮你做了这件事(等待服务端的响应)，后返回结果</p>
+<p>代码中的实现如Dubbo中的DefaultFuture</p>
+<p>java代码实现如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 此类为 Guarded Suspension(守卫,挂起)  模式 的典型实现</span></span><br><span class="line"><span class="comment"> * 其本质上是一种等待唤醒机制的实现</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;</span></span><br><span class="line"><span class="comment"> * Guarded Suspension 模式也常被称作 Guarded Wait 模式、Spin Lock 模式（因为使用了 while 循环去等待），这些名字都很形象，</span></span><br><span class="line"><span class="comment"> * 不过它还有一个更形象的非官方名字：多线程版本的 if</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;</span></span><br><span class="line"><span class="comment"> * 官方案例实现可参考</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@link</span> DefaultFuture&#125;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &lt;T&gt; 需要被保护的对象</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">GuardedObject</span>&lt;T&gt; &#123;</span><br><span class="line">    <span class="comment">//保存所有GuardedObject</span></span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">static</span> Map&lt;Object, GuardedObject&gt; gos = <span class="keyword">new</span> <span class="title class_">ConcurrentHashMap</span>&lt;&gt;();</span><br><span class="line">    <span class="keyword">final</span> <span class="type">Lock</span> <span class="variable">lock</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ReentrantLock</span>();</span><br><span class="line">    <span class="keyword">final</span> <span class="type">Condition</span> <span class="variable">done</span> <span class="operator">=</span> lock.newCondition();</span><br><span class="line">    <span class="keyword">final</span> <span class="type">int</span> <span class="variable">timeout</span> <span class="operator">=</span> <span class="number">2</span>;</span><br><span class="line">    <span class="comment">//受保护的对象</span></span><br><span class="line">    T obj;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//静态方法创建GuardedObject</span></span><br><span class="line">    <span class="keyword">static</span> &lt;K&gt; GuardedObject <span class="title function_">create</span><span class="params">(K key)</span> &#123;</span><br><span class="line">        <span class="type">GuardedObject</span> <span class="variable">go</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">GuardedObject</span>();</span><br><span class="line">        gos.put(key, go);</span><br><span class="line">        <span class="keyword">return</span> go;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> &lt;K, T&gt; <span class="keyword">void</span> <span class="title function_">fireEvent</span><span class="params">(K key, T obj)</span> &#123;</span><br><span class="line">        <span class="type">GuardedObject</span> <span class="variable">go</span> <span class="operator">=</span> gos.remove(key);</span><br><span class="line">        <span class="keyword">if</span> (go != <span class="literal">null</span>) &#123;</span><br><span class="line">            go.onChanged(obj);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//获取受保护对象</span></span><br><span class="line">    T <span class="title function_">get</span><span class="params">(Predicate&lt;T&gt; p)</span> &#123;</span><br><span class="line">        lock.lock();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//MESA管程推荐写法</span></span><br><span class="line">            <span class="keyword">while</span> (!p.test(obj)) &#123;</span><br><span class="line">                done.await(timeout, TimeUnit.SECONDS);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            lock.unlock();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//返回非空的受保护对象</span></span><br><span class="line">        <span class="keyword">return</span> obj;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//事件通知方法</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">onChanged</span><span class="params">(T obj)</span> &#123;</span><br><span class="line">        lock.lock();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="built_in">this</span>.obj = obj;</span><br><span class="line">            done.signalAll();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            lock.unlock();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="Thread-Per-Message"><a href="#Thread-Per-Message" class="headerlink" title="Thread-Per-Message"></a>Thread-Per-Message</h3><p>Thread-Per-Message 模式，简言之就是为<strong>每个任务分配一个独立的线程</strong>。这是一种最简单的分工方法，实现起来也非常简单。</p>
+<p>但实现这种模式 java线程并不友好，因为java中的线程是个重量级的对象，不宜随意创建</p>
+<h4 id="轻量级线程"><a href="#轻量级线程" class="headerlink" title="轻量级线程:"></a>轻量级线程:</h4><p><strong>协程</strong>:<br>Fiber协程: 轻量级线程，其创建代价几乎相当于创建一个普通的对象<br>go语言就是语言层面支持协程的，所以说go语言很容易抗并发<br><strong>java中的Fiber 还没有 正式发布，还在openJdk中</strong></p>
+<h3 id="Worker-Thread-模式"><a href="#Worker-Thread-模式" class="headerlink" title="Worker Thread 模式"></a>Worker Thread 模式</h3><p><strong>线程池是典型的Worker Thread 模式</strong></p>
+<h3 id="两阶段终止模式-如何优雅的终止线程"><a href="#两阶段终止模式-如何优雅的终止线程" class="headerlink" title="两阶段终止模式:如何优雅的终止线程"></a>两阶段终止模式:如何优雅的终止线程</h3><p>线程终止，在早期可以调用stop()方法，这个方法已被废弃</p>
+<p>因为stop()方法有些一剑封喉，没有机会料理后事</p>
+<p>前辈们后来总结出来了一种:两阶段终止模式</p>
+<h4 id="如何优雅的中断线程"><a href="#如何优雅的中断线程" class="headerlink" title="如何优雅的中断线程"></a>如何优雅的中断线程</h4><p>中断线程对应java中的 interrupt()<br><strong>这个方法并不会直接关闭线程</strong>，而算是一个标记，当程序检测到此标记后，可以再来判断处理，是否中断任务</p>
+<p>jvm在try catch后会重置线程的中断标记</p>
+<p>使用示例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    doSomething();</span><br><span class="line">&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">    <span class="comment">//重新设置线程中断状态 </span></span><br><span class="line">    Thread.currentThread().interrupt();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>上面的示例代码的确能够解决当前的问题，但是建议你在实际工作中谨慎使用。<br>原因在于我们很可能在线程的 run() 方法中调用第三方类库提供的方法，而我们没有办法保证第三方类库正确处理了线程的中断异常，例如第三方类库在捕获到 Thread.sleep() 方法抛出的中断异常后，没有重新设置线程的中断状态，那么就会导致线程不能够正常终止。<br>所以强烈建议你设置自己的线程终止标志位，例如在下面的代码中，使用 isTerminated 作为线程终止标志位，此时无论是否正确处理了线程的中断异常，都不会影响线程优雅地终止。</p>
+</blockquote>
+<p>设置自己的中断标记</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Proxy</span> &#123;</span><br><span class="line">  <span class="comment">//线程终止标志位</span></span><br><span class="line">  <span class="keyword">volatile</span> <span class="type">boolean</span> <span class="variable">terminated</span> <span class="operator">=</span> <span class="literal">false</span>;</span><br><span class="line">  <span class="type">boolean</span> <span class="variable">started</span> <span class="operator">=</span> <span class="literal">false</span>;</span><br><span class="line">  <span class="comment">//采集线程</span></span><br><span class="line">  Thread rptThread;</span><br><span class="line">  <span class="comment">//启动采集功能</span></span><br><span class="line">  <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title function_">start</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="comment">//不允许同时启动多个采集线程</span></span><br><span class="line">    <span class="keyword">if</span> (started) &#123;</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    started = <span class="literal">true</span>;</span><br><span class="line">    terminated = <span class="literal">false</span>;</span><br><span class="line">    rptThread = <span class="keyword">new</span> <span class="title class_">Thread</span>(()-&gt;&#123;</span><br><span class="line">      <span class="keyword">while</span> (!terminated)&#123;</span><br><span class="line">        <span class="comment">//省略采集、回传实现</span></span><br><span class="line">        report();</span><br><span class="line">        <span class="comment">//每隔两秒钟采集、回传一次数据</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">          Thread.sleep(<span class="number">2000</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e)&#123;</span><br><span class="line">          <span class="comment">//重新设置线程中断状态</span></span><br><span class="line">          Thread.currentThread().interrupt();</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">//执行到此处说明线程马上终止</span></span><br><span class="line">      started = <span class="literal">false</span>;</span><br><span class="line">    &#125;);</span><br><span class="line">    rptThread.start();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//终止采集功能</span></span><br><span class="line">  <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title function_">stop</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="comment">//设置中断标志位</span></span><br><span class="line">    terminated = <span class="literal">true</span>;</span><br><span class="line">    <span class="comment">//中断线程rptThread</span></span><br><span class="line">    rptThread.interrupt();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="如何优雅地终止线程池"><a href="#如何优雅地终止线程池" class="headerlink" title="如何优雅地终止线程池"></a>如何优雅地终止线程池</h4><p>线程池提供了两个终止方法：**shutdown()和shutdownNow()**。</p>
+<p>调用这两个方法后线程池都会拒绝接受新任务</p>
+<p><strong>shutdown()</strong> 方法是一种很保守的关闭线程池的方法。<br>线程池执行 shutdown() 后，就会拒绝接收新的任务，但是<strong>会等待线程池中正在执行的任务和已经进入阻塞队列的任务都执行完之后才最终关闭线程池。</strong></p>
+<p><strong>shutdownNow()</strong> 方法，相对就激进一些了，<br>线程池执行 shutdownNow() 后，会拒绝接收新的任务，<strong>同时还会中断线程池中正在执行的任务，已经进入阻塞队列的任务也被剥夺了执行的机会，不过这些被剥夺执行机会的任务会作为 shutdownNow() 方法的返回值返回。因为 shutdownNow() 方法会中断正在执行的线程，所以提交到线程池的任务，如果需要优雅地结束，就需要正确地处理线程中断。</strong></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/04/01/%E5%B7%B2%E5%8F%91%E5%B8%83/java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%E4%B8%8E%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/" rel="prev" title="java内存模型和内存结构">
+                  <i class="fa fa-angle-left"></i> java内存模型和内存结构
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/04/01/%E5%B7%B2%E5%8F%91%E5%B8%83/%E5%B9%B6%E5%8F%91%E7%AC%94%E8%AE%B0/" rel="next" title="并发工具类归档与详解">
+                  并发工具类归档与详解 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Link Sun</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

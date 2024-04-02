@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.hongker.org","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="java 各大版本 目前java出到了jdk 14 (2019.4) jdk15将于2020.9月中旬发布     版本 年份 特性    1.0 1996 语言本身   1.1 1997 内部类   1.2 1998 strictfp修饰符   1.3 2000 无   1.4 2002 断言   5.0（1.5） 2004 泛型类，“for each”循环，可变元参数，自动装箱，元数据，枚举，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="泽仁&#39;s Blogs">
+<meta property="og:url" content="http://blog.hongker.org/2024/04/01/java%20%E5%90%84%E5%A4%A7%E7%89%88%E6%9C%AC%E4%BB%8B%E7%BB%8D/index.html">
+<meta property="og:site_name" content="泽仁&#39;s Blogs">
+<meta property="og:description" content="java 各大版本 目前java出到了jdk 14 (2019.4) jdk15将于2020.9月中旬发布     版本 年份 特性    1.0 1996 语言本身   1.1 1997 内部类   1.2 1998 strictfp修饰符   1.3 2000 无   1.4 2002 断言   5.0（1.5） 2004 泛型类，“for each”循环，可变元参数，自动装箱，元数据，枚举，">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-04-01T13:57:24.929Z">
+<meta property="article:modified_time" content="2020-08-22T06:27:56.000Z">
+<meta property="article:author" content="Link Sun">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://blog.hongker.org/2024/04/01/java%20%E5%90%84%E5%A4%A7%E7%89%88%E6%9C%AC%E4%BB%8B%E7%BB%8D/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://blog.hongker.org/2024/04/01/java%20%E5%90%84%E5%A4%A7%E7%89%88%E6%9C%AC%E4%BB%8B%E7%BB%8D/","path":"2024/04/01/java 各大版本介绍/","title":""}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title> | 泽仁's Blogs</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">泽仁's Blogs</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#java-%E5%90%84%E5%A4%A7%E7%89%88%E6%9C%AC"><span class="nav-number">1.</span> <span class="nav-text">java 各大版本</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Link Sun</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://blog.hongker.org/2024/04/01/java%20%E5%90%84%E5%A4%A7%E7%89%88%E6%9C%AC%E4%BB%8B%E7%BB%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Link Sun">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泽仁's Blogs">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | 泽仁's Blogs">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-04-01 21:57:24" itemprop="dateCreated datePublished" datetime="2024-04-01T21:57:24+08:00">2024-04-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2020-08-22 14:27:56" itemprop="dateModified" datetime="2020-08-22T14:27:56+08:00">2020-08-22</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="java-各大版本"><a href="#java-各大版本" class="headerlink" title="java 各大版本"></a>java 各大版本</h2><blockquote>
+<p>目前java出到了jdk 14 (2019.4)</p>
+<p>jdk15将于2020.9月中旬发布</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>版本</th>
+<th>年份</th>
+<th>特性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1.0</td>
+<td>1996</td>
+<td>语言本身</td>
+</tr>
+<tr>
+<td>1.1</td>
+<td>1997</td>
+<td>内部类</td>
+</tr>
+<tr>
+<td>1.2</td>
+<td>1998</td>
+<td>strictfp修饰符</td>
+</tr>
+<tr>
+<td>1.3</td>
+<td>2000</td>
+<td>无</td>
+</tr>
+<tr>
+<td>1.4</td>
+<td>2002</td>
+<td>断言</td>
+</tr>
+<tr>
+<td>5.0（1.5）</td>
+<td>2004</td>
+<td>泛型类，“for each”循环，可变元参数，自动装箱，元数据，枚举，静态导入</td>
+</tr>
+<tr>
+<td>6（1.6）</td>
+<td>2006</td>
+<td>无</td>
+</tr>
+<tr>
+<td>7（1.7）</td>
+<td>2011</td>
+<td>基于字符串的switch，钻石操作符（&lt;&gt;,即泛型）,二进制字面量，异常处理改进</td>
+</tr>
+<tr>
+<td>8（1.8）</td>
+<td>2014</td>
+<td>lambda表达式，包含默认方法的接口，流和日期&#x2F;时间库(Stream,LocalDateTime)</td>
+</tr>
+<tr>
+<td>9</td>
+<td>2017</td>
+<td>模块系统，JShell（交互式编程环境）,private method接口中可使用私有方法</td>
+</tr>
+<tr>
+<td>10</td>
+<td>2018</td>
+<td>var,局部变量推断</td>
+</tr>
+<tr>
+<td>11</td>
+<td>2018</td>
+<td>字符串操作加强（即多了层操作封装），ZGC可伸缩低延迟垃圾收集器，</td>
+</tr>
+<tr>
+<td>12</td>
+<td>2018</td>
+<td>增强switch</td>
+</tr>
+<tr>
+<td>13</td>
+<td>2018</td>
+<td>增强switch,支持yield关键字，文本块</td>
+</tr>
+<tr>
+<td>14</td>
+<td>2019</td>
+<td>record 关键字，switch增强（12版本）转为正式版</td>
+</tr>
+<tr>
+<td>15</td>
+<td>2020</td>
+<td>2020.9月中旬发布，待定</td>
+</tr>
+</tbody></table>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/04/01/%E5%B7%B2%E5%8F%91%E5%B8%83/%E9%AB%98%E6%80%A7%E8%83%BD%E7%BD%91%E7%BB%9C%E5%BA%94%E7%94%A8%E6%A1%86%E6%9E%B6Netty/" rel="prev" title="高性能网络应用框架Netty">
+                  <i class="fa fa-angle-left"></i> 高性能网络应用框架Netty
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/04/01/k8s_Note/" rel="next" title="">
+                   <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Link Sun</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

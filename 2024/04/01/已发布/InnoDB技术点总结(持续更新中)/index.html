@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.hongker.org","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="事务的基本概念InnoDB是事务的存储引擎,其通过Force Log at Commit(提交时强行记录日志)的记住,来实现事务的持久性,即当事务提交(COMMIT)时,必须先将该事务的所有日志写入到重做日志文件进行持久化,待事务的COMMIT操作完成才算完成  这里的日志是指 重做日志,在InnoDB存储引擎中,由两部分组成,即redo log和 undo log。 redo log: 用来保证">
+<meta property="og:type" content="article">
+<meta property="og:title" content="InnoDB技术点总结(持续更新中)">
+<meta property="og:url" content="http://blog.hongker.org/2024/04/01/%E5%B7%B2%E5%8F%91%E5%B8%83/InnoDB%E6%8A%80%E6%9C%AF%E7%82%B9%E6%80%BB%E7%BB%93(%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E4%B8%AD)/index.html">
+<meta property="og:site_name" content="泽仁&#39;s Blogs">
+<meta property="og:description" content="事务的基本概念InnoDB是事务的存储引擎,其通过Force Log at Commit(提交时强行记录日志)的记住,来实现事务的持久性,即当事务提交(COMMIT)时,必须先将该事务的所有日志写入到重做日志文件进行持久化,待事务的COMMIT操作完成才算完成  这里的日志是指 重做日志,在InnoDB存储引擎中,由两部分组成,即redo log和 undo log。 redo log: 用来保证">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-04-01T13:57:24.924Z">
+<meta property="article:modified_time" content="2020-10-26T09:07:18.000Z">
+<meta property="article:author" content="Link Sun">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://blog.hongker.org/2024/04/01/%E5%B7%B2%E5%8F%91%E5%B8%83/InnoDB%E6%8A%80%E6%9C%AF%E7%82%B9%E6%80%BB%E7%BB%93(%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E4%B8%AD)/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://blog.hongker.org/2024/04/01/%E5%B7%B2%E5%8F%91%E5%B8%83/InnoDB%E6%8A%80%E6%9C%AF%E7%82%B9%E6%80%BB%E7%BB%93(%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E4%B8%AD)/","path":"2024/04/01/已发布/InnoDB技术点总结(持续更新中)/","title":"InnoDB技术点总结(持续更新中)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>InnoDB技术点总结(持续更新中) | 泽仁's Blogs</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">泽仁's Blogs</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8B%E5%8A%A1%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">事务的基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%8D%E5%81%9A%E6%97%A5%E5%BF%97"><span class="nav-number">2.</span> <span class="nav-text">重做日志</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%81%9A%E6%97%A5%E5%BF%97%E7%9A%84%E7%BB%84%E6%88%90"><span class="nav-number">2.1.</span> <span class="nav-text">重做日志的组成</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#redo-log"><span class="nav-number">2.1.1.</span> <span class="nav-text">redo log</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#undo-log"><span class="nav-number">2.1.2.</span> <span class="nav-text">undo log</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%BA%8B%E5%8A%A1%E5%9B%9E%E6%BB%9A"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">事务回滚</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#MVCC"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">MVCC</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Checkpoint%E6%8A%80%E6%9C%AF"><span class="nav-number">3.</span> <span class="nav-text">Checkpoint技术</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Master-Thread%E5%B7%A5%E4%BD%9C%E6%96%B9%E5%BC%8F"><span class="nav-number">4.</span> <span class="nav-text">Master Thread工作方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AF%8F%E7%A7%92%E4%B8%80%E6%AC%A1%E7%9A%84%E6%93%8D%E4%BD%9C%E5%8C%85%E6%8B%AC%EF%BC%9A"><span class="nav-number">4.1.</span> <span class="nav-text">每秒一次的操作包括：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AF%8F10%E7%A7%92%E7%9A%84%E6%93%8D%E4%BD%9C%EF%BC%8C%E5%8C%85%E6%8B%AC%E5%A6%82%E4%B8%8B%E5%86%85%E5%AE%B9%EF%BC%9A"><span class="nav-number">4.2.</span> <span class="nav-text">每10秒的操作，包括如下内容：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">4.3.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#InnoDB%E5%85%B3%E9%94%AE%E7%89%B9%E6%80%A7"><span class="nav-number">5.</span> <span class="nav-text">InnoDB关键特性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8F%92%E5%85%A5%E7%BC%93%E5%86%B2-Insert-Buffer"><span class="nav-number">5.1.</span> <span class="nav-text">插入缓冲(Insert Buffer)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%A4%E6%AC%A1%E5%86%99-Double-Write"><span class="nav-number">5.2.</span> <span class="nav-text">两次写(Double Write)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%87%AA%E9%80%82%E5%BA%94%E5%93%88%E5%B8%8C%E7%B4%A2%E5%BC%95-Adaptive-Hash-Index"><span class="nav-number">5.3.</span> <span class="nav-text">自适应哈希索引(Adaptive Hash Index)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5IO-Async-IO"><span class="nav-number">5.4.</span> <span class="nav-text">异步IO(Async IO)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%B7%E6%96%B0%E9%82%BB%E6%8E%A5%E9%A1%B5-Flush-Neighbor-Page"><span class="nav-number">5.5.</span> <span class="nav-text">刷新邻接页(Flush Neighbor Page)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%85%B3%E9%97%AD"><span class="nav-number">5.6.</span> <span class="nav-text">启动恢复与关闭</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E5%85%B3%E9%97%AD%E8%A1%8C%E4%B8%BA"><span class="nav-number">5.6.1.</span> <span class="nav-text">设置关闭行为</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E5%90%AF%E5%8A%A8%E6%81%A2%E5%A4%8D%E8%A1%8C%E4%B8%BA"><span class="nav-number">5.6.2.</span> <span class="nav-text">设置启动恢复行为</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6"><span class="nav-number">6.</span> <span class="nav-text">日志文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%94%99%E8%AF%AF%E6%97%A5%E5%BF%97"><span class="nav-number">6.1.</span> <span class="nav-text">错误日志</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%85%A2%E6%9F%A5%E8%AF%A2%E6%97%A5%E5%BF%97-slow-log"><span class="nav-number">6.2.</span> <span class="nav-text">慢查询日志(slow log)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BC%80%E5%90%AF-%E6%9F%A5%E7%9C%8B%E6%85%A2%E6%9F%A5%E8%AF%A2%E6%97%A5%E5%BF%97"><span class="nav-number">6.2.1.</span> <span class="nav-text">开启,查看慢查询日志</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%B0%E5%BD%95%E6%9C%AA%E4%BD%BF%E7%94%A8%E7%B4%A2%E5%BC%95sql"><span class="nav-number">6.2.2.</span> <span class="nav-text">记录未使用索引sql</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%85%A2%E6%9F%A5%E8%AF%A2%E5%88%86%E6%9E%90%E5%91%BD%E4%BB%A4"><span class="nav-number">6.2.3.</span> <span class="nav-text">慢查询分析命令</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E6%97%A5%E5%BF%97-general-log"><span class="nav-number">6.3.</span> <span class="nav-text">查询日志(general log)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%97%A5%E5%BF%97-binary-log"><span class="nav-number">6.4.</span> <span class="nav-text">二进制日志(binary log)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD%E4%BD%9C%E7%94%A8"><span class="nav-number">6.4.1.</span> <span class="nav-text">功能作用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%90%AF%E7%94%A8%E5%92%8C%E6%9F%A5%E7%9C%8Bbinlog"><span class="nav-number">6.4.2.</span> <span class="nav-text">启用和查看binlog</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%81%A2%E5%A4%8D"><span class="nav-number">6.4.3.</span> <span class="nav-text">数据恢复</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1"><span class="nav-number">7.</span> <span class="nav-text">分布式事务</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Link Sun</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://blog.hongker.org/2024/04/01/%E5%B7%B2%E5%8F%91%E5%B8%83/InnoDB%E6%8A%80%E6%9C%AF%E7%82%B9%E6%80%BB%E7%BB%93(%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E4%B8%AD)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Link Sun">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泽仁's Blogs">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="InnoDB技术点总结(持续更新中) | 泽仁's Blogs">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          InnoDB技术点总结(持续更新中)
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-04-01 21:57:24" itemprop="dateCreated datePublished" datetime="2024-04-01T21:57:24+08:00">2024-04-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2020-10-26 17:07:18" itemprop="dateModified" datetime="2020-10-26T17:07:18+08:00">2020-10-26</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h3 id="事务的基本概念"><a href="#事务的基本概念" class="headerlink" title="事务的基本概念"></a>事务的基本概念</h3><p>InnoDB是事务的存储引擎,其通过Force Log at Commit(提交时强行记录日志)的记住,来实现事务的持久性,即当事务提交(COMMIT)时,必须先将该事务的所有日志写入到重做日志文件进行持久化,待事务的COMMIT操作完成才算完成</p>
+<blockquote>
+<p>这里的日志是指 重做日志,在InnoDB存储引擎中,由两部分组成,即redo log和 undo log。</p>
+<p>redo log: 用来保证事务的持久性</p>
+<p>undo log:用来帮助事务回滚及MVCC的功能。</p>
+</blockquote>
+<h3 id="重做日志"><a href="#重做日志" class="headerlink" title="重做日志"></a>重做日志</h3><p> 为实现事务的<strong>持久性</strong>,当前数据库系统普遍都采用了 Write Ahead Log（写前先写日志）策略<br>即:<strong>当事务提交时,先写重做日志,再修改页</strong></p>
+<blockquote>
+<p>在提交事务时,会先将重做日志缓冲刷新到重做日志文件上进行持久化,以保证事务的<strong>持久性</strong></p>
+</blockquote>
+<h4 id="重做日志的组成"><a href="#重做日志的组成" class="headerlink" title="重做日志的组成"></a>重做日志的组成</h4><p>重做日志由两部分组成即redo log和undo log</p>
+<h5 id="redo-log"><a href="#redo-log" class="headerlink" title="redo log"></a>redo log</h5><p>redo log其来实现事务的持久性,其由两部分组成:</p>
+<ol>
+<li>内存中的重做日志缓冲(redo log buffer),其是易失的</li>
+<li>重做日志文件(redo log file),其是持久的</li>
+</ol>
+<blockquote>
+<p>日志缓冲存放在内存中,日志文件存放在磁盘文件中</p>
+</blockquote>
+<h5 id="undo-log"><a href="#undo-log" class="headerlink" title="undo log"></a>undo log</h5><p><strong>undo log 实现了事务回滚和MVCC(多版本控制)</strong></p>
+<h6 id="事务回滚"><a href="#事务回滚" class="headerlink" title="事务回滚"></a>事务回滚</h6><p>事务有时还需要进行回滚操作,这时就需要undo。因此在对数据库进行修改时,InnoDB存储引擎不但会产生redo,还会产生一定量的undo。这样如果用户执行的事务或语句由于某种原因失败了,又或者用户用一条ROLLBACL语句请求回滚,就可以利用这些undo信息将数据回滚到修改之前的样子。</p>
+<blockquote>
+<p>当InnoDB存储引擎回滚时,他实际上做的是与先前相仿的工作。对于每个Insert InnoDB存储引擎会完成一个delete；对于每个delete,InnoDB存储引擎会执行一个insert,对于每个update,InnoDB存储引擎会执行一个相反的update,将修改前的行放回去</p>
+</blockquote>
+<h6 id="MVCC"><a href="#MVCC" class="headerlink" title="MVCC"></a>MVCC</h6><p>除了回滚操作,undo的另一个作用是MVCC,即在InnoDB存储引擎中MVCC的实现是通过undo来完成。当用户读取一行记录时,若该记录已经被其他事务占用,当前事务可以通过undo读取之前的行版本信息,以此来实现非锁定读</p>
+<p><strong>undo log会产生 redo log,也就是 undo log的产生会伴随着 redo log的产生</strong>,这是因为undo log 也需要持久性的保护。</p>
+<p><strong>重做日志在以下三种情况下会从日志缓存中刷新到外部磁盘的重做日志文件中</strong></p>
+<ul>
+<li>Master Thread每秒将重做日志缓冲刷新到重做日志中</li>
+<li>每个事务提交时会抽将重做日志刷新到重做日志文件中</li>
+<li>当重做日志缓冲池剩余空间小于1&#x2F;2时,重做日志缓冲刷新到重做日志文件</li>
+</ul>
+<h3 id="Checkpoint技术"><a href="#Checkpoint技术" class="headerlink" title="Checkpoint技术"></a>Checkpoint技术</h3><p><strong>Checkpoint所做的事情无外乎就是将缓存池中的脏页刷回到磁盘</strong></p>
+<p>不同之处在于每次刷新多少页到磁盘,每次从那里取脏页,以及什么时间出发Checkpoint</p>
+<p>Checkpoint(检查点)技术的目的是解决以下几个问题</p>
+<ul>
+<li>缩短数据库的恢复时间</li>
+<li>缓冲池不够用时,将脏吔刷新到磁盘</li>
+<li>重做日志不可用时,刷新脏页</li>
+</ul>
+<h3 id="Master-Thread工作方式"><a href="#Master-Thread工作方式" class="headerlink" title="Master Thread工作方式"></a>Master Thread工作方式</h3><p>MasterThread具有最高的线程优先级别,其内部由多个循环组成</p>
+<ol>
+<li>主循环(loop)</li>
+<li>后台循环(backgroup loop)</li>
+<li>刷新循环(flush loop)</li>
+<li>暂停循环(suspend loop)</li>
+</ol>
+<h4 id="每秒一次的操作包括："><a href="#每秒一次的操作包括：" class="headerlink" title="每秒一次的操作包括："></a>每秒一次的操作包括：</h4><ul>
+<li>日志缓冲刷新到磁盘，即使这个事务还没有提交（总是）；</li>
+<li>合并插入缓冲（可能）；</li>
+<li>至多刷新100个InnoDB的缓冲池中的脏页到磁盘（可能）；</li>
+<li>如果当前没有用户活动，则切换到background loop（可能）。<br><strong>即使某个事务还没有提交，InnoDB存储引擎仍然每秒会将重做日志缓冲中的内容刷新到重做日志文件</strong>。这一点是必须要知道的，因为这可以很好地解释为什么再大的事务提交（commit）的时间也是很短的。</li>
+</ul>
+<h4 id="每10秒的操作，包括如下内容："><a href="#每10秒的操作，包括如下内容：" class="headerlink" title="每10秒的操作，包括如下内容："></a>每10秒的操作，包括如下内容：</h4><ul>
+<li>刷新100个脏页到磁盘（可能的情况下）；</li>
+<li>合并至多5个插入缓冲（总是）；</li>
+<li>将日志缓冲刷新到磁盘（总是）；</li>
+<li>删除无用的Undo页（总是）；</li>
+<li>刷新100个或者10个脏页到磁盘（总是）。</li>
+</ul>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p><strong>综上:MasterThread主要任务有</strong> </p>
+<ol>
+<li><strong>将日志刷新到磁盘</strong></li>
+<li><strong>合并插入缓冲</strong></li>
+<li><strong>刷新脏页到磁盘</strong></li>
+<li><strong>删除无用的Undo页</strong></li>
+<li><strong>当没有用户活动时挂起线程</strong></li>
+</ol>
+<blockquote>
+<p>在Innodb版本后续的更新中(1.2.x)，刷新脏页的操作从Master Thread线程中分离到了一个单独的Page Cleaner Thread中，<br>从而减轻了MasterThread的工作，进一步提高了系统的并发性</p>
+</blockquote>
+<h3 id="InnoDB关键特性"><a href="#InnoDB关键特性" class="headerlink" title="InnoDB关键特性"></a>InnoDB关键特性</h3><h4 id="插入缓冲-Insert-Buffer"><a href="#插入缓冲-Insert-Buffer" class="headerlink" title="插入缓冲(Insert Buffer)"></a>插入缓冲(Insert Buffer)</h4><h4 id="两次写-Double-Write"><a href="#两次写-Double-Write" class="headerlink" title="两次写(Double Write)"></a>两次写(Double Write)</h4><h4 id="自适应哈希索引-Adaptive-Hash-Index"><a href="#自适应哈希索引-Adaptive-Hash-Index" class="headerlink" title="自适应哈希索引(Adaptive Hash Index)"></a>自适应哈希索引(Adaptive Hash Index)</h4><ul>
+<li><p>InnoDB会<strong>根据访问评率和访问模式来自动地为某些热点页来简历哈希索引</strong></p>
+<p>其设计思想是数据库自由化的(self-tuning),即无需DBA对数据库进行认为调整</p>
+</li>
+<li><p>AHI的建立有一个条件,即对这个页的连续访问模式必须是一样的</p>
+</li>
+<li><p>AHI默认为开启状态</p>
+</li>
+</ul>
+<blockquote>
+<p>访问模式:即查询条件</p>
+<p>where a &#x3D; xx</p>
+<p>where a &#x3D; xx and b&#x3D;xxx</p>
+<p>以上就是访问模式不一样</p>
+</blockquote>
+<h4 id="异步IO-Async-IO"><a href="#异步IO-Async-IO" class="headerlink" title="异步IO(Async IO)"></a>异步IO(Async IO)</h4><p>  如果用户发出的是一条索引扫描的查询,那么这条sql查询语句可能需要扫描多个索引页,也就是需要进行多次的IO操作,在每扫描一个页并等待其完成后在进行下一次扫描,这是没有必要的。</p>
+<p>  用户可以再发出一个IO请求后立即在发出另一个IO请求,等待所有IO操作的完成,这就是AIO(Async IO)</p>
+<blockquote>
+<p>在InnoDB存储引擎中,read ahead方式的读取都是通过AIO完成,脏页的刷新,即磁盘的写入操作则全部由AIO完成</p>
+</blockquote>
+<h4 id="刷新邻接页-Flush-Neighbor-Page"><a href="#刷新邻接页-Flush-Neighbor-Page" class="headerlink" title="刷新邻接页(Flush Neighbor Page)"></a>刷新邻接页(Flush Neighbor Page)</h4><p>其工作原理为:当刷新一个脏页时,InnoDB存储引擎会检测该页所载区(Extent)的所有页,如果是脏页,那么一起刷新,这样做的好处显而易见,通过AIO可以将多个IO写入合并为一个IO操作,故该工作机制在传统机械磁盘下有着显著的优势</p>
+<p>InnoDB存储引擎从1.2x版本提供了参数 Innodb_flush_neighbors,可以控制是否启用此特性</p>
+<blockquote>
+<p>对于固态硬盘,因其有着超高的IOPS性能的磁盘,建议将该参数设置为0,即关闭此特性</p>
+<p>而传统机械硬盘则建议启用该特性</p>
+</blockquote>
+<h4 id="启动恢复与关闭"><a href="#启动恢复与关闭" class="headerlink" title="启动恢复与关闭"></a>启动恢复与关闭</h4><p>InnoDB是MySQL是巨亏的存储引擎之一,因此InnoDB存储引擎的启动和关闭,更准确的是指在MySQL实例的启动过程中对InnoDB存储引擎的处理过程</p>
+<h5 id="设置关闭行为"><a href="#设置关闭行为" class="headerlink" title="设置关闭行为"></a>设置关闭行为</h5><p>在关闭时,参数 innodb_fast_shutdown影响着表的存储引擎为InnoDB的行为,改参数可取值为0,1,2,默认为1</p>
+<ol start="0">
+<li><p>表示在关闭Mysql数据库时,完成所有的 full purge 和merge insert buffer,并且刷新所有脏页到磁盘,这可能需要一段时间</p>
+<p>如果在进行InnoDB升级时,必须将这个参数调为0,然后再关闭数据库</p>
+</li>
+<li><p>默认值,表示不进行 full purge 和merge insert buffer操作,但还是会刷新所有脏页到磁盘</p>
+</li>
+<li><p>表示不完成full purge 和merge insert buffer操作,也不会刷新脏页到磁盘,而是会记录日志,在下次启动时候,会进行恢复操作</p>
+</li>
+</ol>
+<h5 id="设置启动恢复行为"><a href="#设置启动恢复行为" class="headerlink" title="设置启动恢复行为"></a>设置启动恢复行为</h5><p>参数 innodb_force_recovery影响了,数据库实例启动时的恢复数据行为<br>默认为0,代表当发生需要恢复时,进行所有的恢复操作,还可设置为6个非0值:1~6</p>
+<ol>
+<li>（SRV_FORCE_IGNORE_CORRUPT）：忽略检查到的corrupt页。</li>
+<li>（SRV_FORCE_NO_BACKGROUND）：阻止Master Thread线程的运行，如Master Thread线程需要进行full purge操作，而这会导致crash。</li>
+<li>（SRV_FORCE_NO_TRX_UNDO）：不进行事务的回滚操作。</li>
+<li>（SRV_FORCE_NO_IBUF_MERGE）：不进行插入缓冲的合并操作。</li>
+<li>（SRV_FORCE_NO_UNDO_LOG_SCAN）：不查看撤销日志（Undo Log），InnoDB存储引擎会将未提交的事务视为已提交。</li>
+<li>（SRV_FORCE_NO_LOG_REDO）：不进行前滚的操作。</li>
+</ol>
+<h3 id="日志文件"><a href="#日志文件" class="headerlink" title="日志文件"></a>日志文件</h3><p>日志文件记录了影响mysql数据库各种类型活动。MySQL中常见的日志文件有:</p>
+<ol>
+<li>错误日志（error log）</li>
+<li>二进制日志（binlog）</li>
+<li>慢查询日志（slow query log）</li>
+<li>查询日志（log）</li>
+</ol>
+<h4 id="错误日志"><a href="#错误日志" class="headerlink" title="错误日志"></a>错误日志</h4><p>使用如下命令来查看错误日志所在地址</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> variables <span class="keyword">like</span> <span class="string">&#x27;log_error&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>当数据库启动失败时,应当首先查看该日志</p>
+<p>错误日志中,可能还会出现警告,比如告诉用户需要增大innoDB存储引擎的redo log,</p>
+</blockquote>
+<h4 id="慢查询日志-slow-log"><a href="#慢查询日志-slow-log" class="headerlink" title="慢查询日志(slow log)"></a>慢查询日志(slow log)</h4><h5 id="开启-查看慢查询日志"><a href="#开启-查看慢查询日志" class="headerlink" title="开启,查看慢查询日志"></a>开启,查看慢查询日志</h5><p>使用<code>SHOW VARIABLES LIKE &#39;slow_query_log&#39;;</code> 或<code>SHOW VARIABLES LIKE &#39;log_slow_queries&#39;;</code>可以查看是否开启慢查询日志,</p>
+<p>如未开启,则可以去my.cnf中配置开启</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 阈值,大于这个值时,才会记录慢查询日志</span></span><br><span class="line"><span class="keyword">SHOW</span> VARIABLES <span class="keyword">LIKE</span> <span class="string">&#x27;long_query_time&#x27;</span>;</span><br><span class="line"><span class="comment">-- 旧版mysql 查看是否开启慢查询参数</span></span><br><span class="line"><span class="keyword">SHOW</span> VARIABLES <span class="keyword">LIKE</span> <span class="string">&#x27;log_slow_queries&#x27;</span>;</span><br><span class="line"><span class="comment">-- 查看慢查询是否开启</span></span><br><span class="line"><span class="keyword">SHOW</span> VARIABLES <span class="keyword">LIKE</span> <span class="string">&#x27;slow_query_log%&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="记录未使用索引sql"><a href="#记录未使用索引sql" class="headerlink" title="记录未使用索引sql"></a>记录未使用索引sql</h5><p>另外慢查询相关的还有两个参数</p>
+<p><code>log_queries_not_using_indexes</code></p>
+<p>是否开启未使用索引慢日志记录</p>
+<p><code>log_throttle_queries_not_using_indexes</code></p>
+<p>表示每分钟允许记录到slow log的且未使用索引的sql语句次数:默认为0,代表不限制</p>
+<blockquote>
+<p>默认情况下,mysql不会开启慢查询日志(超过时间的查询,未使用索引)</p>
+<p>生产环境下若没有使用索引,未经过节流配置,则可能导致 slow_log不断增加,开启节流配置即可</p>
+</blockquote>
+<h5 id="慢查询分析命令"><a href="#慢查询分析命令" class="headerlink" title="慢查询分析命令"></a>慢查询分析命令</h5><p>另外个慢查询日志越来越大越来越多时,可以参考使用mysql提供的命令<code>mysqldumpslow</code></p>
+<p>eg: 如果用户希望得到执行时间最长的10条sql语句,可以允许如下命令</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqldumpslow <span class="operator">-</span>s al <span class="operator">-</span>n xxx.log</span><br></pre></td></tr></table></figure>
+
+
+
+<p>另外在mysql架构下，慢查询日志对应表 <code>mysql.slow_log</code> 表</p>
+<p>可用此值来查看输出类型,默认为FILE,可以改为 TABLE,这样慢查询日志就会直接写进 <code>slow_log</code>表了</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> VARIABLES <span class="keyword">LIKE</span> <span class="string">&#x27;log_output&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>log_output 此值是动态的,因此可以在数据库允许时修改此参数</p>
+</blockquote>
+<p><strong>需要注意的时,开启慢查询还是会对数据库有一定的额外开销,不过好在慢查询日志的参数大多都是动态的,可线上方便修改</strong></p>
+<h4 id="查询日志-general-log"><a href="#查询日志-general-log" class="headerlink" title="查询日志(general log)"></a>查询日志(general log)</h4><p>查询日志记录了所有对mysql数据库的请求信息,物流这些请求是否得到了正确的执行(如就算权限不足执行sql,也会被记录下来)</p>
+<p>默认没有开启,可以使用如下命令查看和开启</p>
+<p>查看启用状态</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> VARIABLES <span class="keyword">LIKE</span> <span class="string">&#x27;general_log&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>设置开启</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span> <span class="keyword">global</span>  general_log <span class="operator">=</span> <span class="string">&#x27;ON&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>其对应的mysql架构的表为  <code>mysql.general_log</code> 表</p>
+<p>使用方式同上慢查询日志,不再赘述</p>
+<h4 id="二进制日志-binary-log"><a href="#二进制日志-binary-log" class="headerlink" title="二进制日志(binary log)"></a>二进制日志(binary log)</h4><p>二进制日志(binary log) 记录了对MySQL数据库执行更改的所有操作,但是不包含select和show这类操作,有时候 update可能并没有受影响行数,但也会被binary log记录</p>
+<h5 id="功能作用"><a href="#功能作用" class="headerlink" title="功能作用"></a>功能作用</h5><p>binary log主要可以做以下几件事</p>
+<ul>
+<li>恢复(recovery):某些数据的恢复需要二进制日志,烈日,在一个数据库全备文件恢复后,用户可以通过二进制日志进行 point-in-time的恢复</li>
+<li>复制(replication):其原理与恢复类似,通过复制和执行二进制日志使一台远程的mysql数据库(一般称为salve或standby)与另一台MySQL(一般称为master或primary)数据库进行实时同步(主从复制)</li>
+<li>审计(audit):用户可以通过而金志日志中的信息来进行审计,判断是否有对数据库进行注入的攻击</li>
+</ul>
+<h5 id="启用和查看binlog"><a href="#启用和查看binlog" class="headerlink" title="启用和查看binlog"></a>启用和查看binlog</h5><p>早些版本mysql并没有开启binary log,但笔者使用的mysql8.0默认是开启了的</p>
+<p>查看启用状态</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> VARIABLES <span class="keyword">LIKE</span> <span class="string">&#x27;log_bin&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>日志所在目录可查看命令 <code>SHOW VARIABLES LIKE &#39;log_bin_basename&#39;;</code> 文件名称为basename加上序号</p>
+<p>查看binlog,使用命令 <code>mysqlbinlog</code>命令,如下:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqlbinlog --start-position=203 binlog.000004</span><br></pre></td></tr></table></figure>
+
+<p>如上为:查看 文件为 <code>binlog.000004</code>的binlog日志,从203行开始查看</p>
+<h5 id="数据恢复"><a href="#数据恢复" class="headerlink" title="数据恢复"></a>数据恢复</h5><p>数据恢复也是使用 <code>mysqlbinlog</code> 命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqlbinlog --stop-position=615 binlog.000017 | mysql -h localhost -uroot -p employees</span><br></pre></td></tr></table></figure>
+
+<p>如上命令含义为:解析 <code>binlog.000017</code>的文件放入 主机为 localhost 的mysql服务器中的 employees数据库中去执行 <code>binlog.000017</code>开始到615行的语句,来达到数据恢复的效果</p>
+<blockquote>
+<p>如果线上使用数据恢复的话一般要配合数据库完备,和增量binlog来实现(因为增量binlog中可能包含误删语句,所以可能需要经过处理)</p>
+</blockquote>
+<h3 id="分布式事务"><a href="#分布式事务" class="headerlink" title="分布式事务"></a>分布式事务</h3><p>InnoDB 存储引擎提供了对XA事务的支持</p>
+<p>在使用分布式事务时,InnoDB存储引擎的事务隔离级别必须设置为 <code>SERIALIZABLE</code></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/04/01/readme/%E5%8F%91%E5%B8%83%E6%AD%A5%E9%AA%A4/" rel="prev" title="博客更新发布步骤">
+                  <i class="fa fa-angle-left"></i> 博客更新发布步骤
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/04/01/%E5%B7%B2%E5%8F%91%E5%B8%83/Docker%E5%AE%89%E8%A3%85%E4%B8%8E%E5%BA%94%E7%94%A8/" rel="next" title="Docker的安装与应用">
+                  Docker的安装与应用 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Link Sun</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
